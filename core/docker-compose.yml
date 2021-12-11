@@ -15,9 +15,9 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik/traefik.yml:/traefik.yml:ro
-      - ./traefik/acme.json:/acme.json
-      - ./traefik/configurations:/configurations
+      - /home/luca/core/traefik/traefik.yml:/traefik.yml:ro
+      - /home/luca/core/traefik/acme.json:/acme.json
+      - /home/luca/core/traefik/config.yml:/config.yml:ro
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
@@ -37,7 +37,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./portainer:/data
+      - /home/luca/core/portainer:/data
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
