@@ -12,7 +12,7 @@ http:
     user-auth:
       basicAuth:
         users:
-          - "raf:$apr1$MTqfVwiE$FKkzT5ERGFqwH9f3uipxA1"
+          - "luca:$2y$10$OwzOuKKICykCTQO12CV5K.g.TEw2j8bl2QuFiaeRoIRVfrs./V1dW"
 
 tls:
   options:
