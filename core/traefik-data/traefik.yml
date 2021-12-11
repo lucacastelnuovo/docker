@@ -27,7 +27,7 @@ providers:
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: rafrasenberg@gmail.com
+      email: luca@castelnuovo.xyz
       storage: acme.json
       keyType: EC384
       httpChallenge:
