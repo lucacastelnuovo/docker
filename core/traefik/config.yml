@@ -15,12 +15,8 @@ http:
   #       passHostHeader: true
 
   middlewares:
-    https-redirect:
-      redirectScheme:
-        scheme: https
-
     default-headers:
-      default-headers:
+      headers:
         # SSL Headers
         sslRedirect: true
         forceSTSHeader: true
