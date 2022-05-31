@@ -8,19 +8,19 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - proxy
+      - traefik-proxy
     ports:
       - 80:80
       - 443:443
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/luca/core/traefik/traefik.yml:/traefik.yml:ro
-      - /home/luca/core/traefik/acme.json:/acme.json
-      - /home/luca/core/traefik/config.yml:/config.yml:ro
+      - ./traefik/traefik.yml:/traefik.yml:ro
+      - ./traefik/acme.json:/acme.json
+      - ./traefik/config.yml:/config.yml:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
+      - "traefik.docker.network=traefik-proxy"
       - "traefik.http.routers.traefik-secure.entrypoints=websecure"
       - "traefik.http.routers.traefik-secure.rule=Host(`traefik.castelnuovo.xyz`)"
       - "traefik.http.routers.traefik-secure.middlewares=user-auth@file"
@@ -33,19 +33,19 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - proxy
+      - traefik-proxy
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/luca/core/portainer:/data
+      - ./portainer:/data
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
+      - "traefik.docker.network=traefik-proxy"
       - "traefik.http.routers.portainer-secure.entrypoints=websecure"
       - "traefik.http.routers.portainer-secure.rule=Host(`portainer.castelnuovo.xyz`)"
       - "traefik.http.routers.portainer-secure.service=portainer"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
 
 networks:
-  proxy:
+  traefik-proxy:
     external: true
