@@ -63,15 +63,19 @@ providers:
 
   file:
     filename: ./config.yml
+    watch: true
 
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
+    watch: true
     network: traefik-proxy
     # Default host rule to containername.castelnuovo.xyz
     defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.castelnuovo.xyz`)"
     swarmModeRefreshSeconds: 15s
-    exposedByDefault: false
+
+log:
+  level: INFO # ERROR
 
 certificatesResolvers:
   letsencrypt:
