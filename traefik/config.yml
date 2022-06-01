@@ -26,7 +26,7 @@ http:
     # Authelia guard
     auth:
       forwardauth:
-        address: http://AUTHELIA_CONTAINER_NAME:9091/api/verify?rd=https://auth.castelnuovo.xyz/
+        address: http://authelia:9091/api/verify?rd=https://authelia.castelnuovo.xyz/
         trustForwardHeader: true
         authResponseHeaders:
           - Remote-User
@@ -37,7 +37,7 @@ http:
     # Authelia basic auth guard
     auth-basic:
       forwardauth:
-        address: http://auth:9091/api/verify?auth=basic
+        address: http://authelia:9091/api/verify?auth=basic
         trustForwardHeader: true
         authResponseHeaders:
           - Remote-User
@@ -67,11 +67,6 @@ http:
         stsSeconds: 63072000
         stsPreload: true
         # permissionsPolicy: ""
-
-    user-auth:
-      basicAuth:
-        users:
-          - "luca:$2y$10$OwzOuKKICykCTQO12CV5K.g.TEw2j8bl2QuFiaeRoIRVfrs./V1dW"
 
 tls:
   options:
