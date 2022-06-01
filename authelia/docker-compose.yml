@@ -19,7 +19,7 @@ services:
       - AUTHELIA_SESSION_SECRET_FILE=/config/secrets/session
       - AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE=/config/secrets/mysql
       - AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE=/config/secrets/smtp
-      - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/config/secrets/encrypt
+      - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/config/secrets/encryption
 
 networks:
   traefik-proxy:
