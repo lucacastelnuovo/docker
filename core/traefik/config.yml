@@ -1,35 +1,72 @@
 http:
-  # routers:
-  #   service1:
-  #     entryPoints:
-  #       - "https"
-  #     rule: "Host(`service1.castelnuovo.xyz`)"
-  #     tls: {}
-  #     service: service1
+  routers:
+    proxmox:
+      entryPoints:
+        - https
+      rule: "Host(`proxmox.castelnuovo.xyz`)"
+      service: proxmox
+      middlewares:
+        - auth
 
-  # services:
-  #   service1:
-  #     loadBalancer:
-  #       servers:
-  #         - url: "http://192.168.1.12"
-  #       passHostHeader: true
+  services:
+    proxmox:
+      loadBalancer:
+        servers:
+          - url: https://teresa.ltc:8006
+        # passHostHeader: true
 
   middlewares:
-    default-headers:
+    # Only Allow Local networks
+    local-ipwhitelist:
+      ipWhiteList:
+        sourceRange:
+          - 127.0.0.1/32 # localhost
+          - 192.168.1.1/24 # LAN Subnet
+
+    # Authelia guard
+    auth:
+      forwardauth:
+        address: http://AUTHELIA_CONTAINER_NAME:9091/api/verify?rd=https://auth.castelnuovo.xyz/
+        trustForwardHeader: true
+        authResponseHeaders:
+          - Remote-User
+          - Remote-Groups
+          - Remote-Name
+          - Remote-Email
+
+    # Authelia basic auth guard
+    auth-basic:
+      forwardauth:
+        address: http://auth:9091/api/verify?auth=basic
+        trustForwardHeader: true
+        authResponseHeaders:
+          - Remote-User
+          - Remote-Groups
+          - Remote-Name
+          - Remote-Email
+
+    securityHeaders:
       headers:
-        # SSL Headers
-        sslRedirect: true
-        forceSTSHeader: true
-        stsIncludeSubdomains: true
-        stsPreload: true
-        stsSeconds: 31536000
-        # Normal Headers
-        frameDeny: true
-        browserXssFilter: true
-        contentTypeNosniff: true
-        customFrameOptionsValue: SAMEORIGIN
+        customResponseHeaders:
+          server: ""
+          X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+        sslProxyHeaders:
+          X-Forwarded-Proto: https
+        hostsProxyHeaders:
+          - X-Forwarded-Host
         customRequestHeaders:
           X-Forwarded-Proto: https
+        customResponseHeaders:
+          X-Forwarded-Proto: https
+        referrerPolicy: same-origin
+        contentTypeNosniff: true
+        browserXssFilter: true
+        frameDeny: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsSeconds: 63072000
+        stsPreload: true
+        # permissionsPolicy: ""
 
     user-auth:
       basicAuth:
@@ -39,6 +76,7 @@ http:
 tls:
   options:
     default:
+      minVersion: VersionTLS12
       cipherSuites:
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
         - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -46,4 +84,3 @@ tls:
         - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
         - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
         - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
-      minVersion: VersionTLS12
