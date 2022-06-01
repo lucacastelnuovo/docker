@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  authelia:
+    image: authelia/authelia:latest
+    container_name: auth
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    volumes:
+      - .:/config
+    labels:
+      traefik.enable: true
+      traefik.http.routers.authelia.entryPoints: https
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
