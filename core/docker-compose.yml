@@ -19,12 +19,12 @@ services:
       - ./traefik/acme.json:/acme.json
       - ./traefik/config.yml:/config.yml:ro
     labels:
-      - traefik.enable: true
-      # - traefik.docker.network: traefik-proxy
-      - traefik.http.routers.traefik-secure.rule: Host(`traefik.castelnuovo.xyz`)
-      - traefik.http.routers.traefik-secure.entrypoints: https
-      - traefik.http.routers.traefik-secure.service: api@internal
-      # - traefik.http.routers.traefik-secure.middlewares: user-auth@file
+      traefik.enable: true
+      # traefik.docker.network: traefik-proxy
+      traefik.http.routers.traefik-secure.rule: Host(`traefik.castelnuovo.xyz`)
+      traefik.http.routers.traefik-secure.entrypoints: https
+      traefik.http.routers.traefik-secure.service: api@internal
+      # traefik.http.routers.traefik-secure.middlewares: user-auth@file
     environment:
       CF_DNS_API_TOKEN: ${CLOUDFLARE_TOKEN}
 
