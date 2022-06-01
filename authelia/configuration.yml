@@ -18,11 +18,6 @@ access_control:
   rules:
     - domain: authelia.castelnuovo.xyz
       policy: bypass
-#    - domain: radarr.example.com
-#      policy: bypass
-#      subject: "group:admins"
-#      resources:
-#      - "^/api/.*$"
     - domain: "test.castelnuovo.xyz"
       policy: one_factor
     - domain: "form.castelnuovo.xyz"
@@ -37,7 +32,8 @@ session:
   name: castelnuovo_session
   domain: auth.castelnuovo.xyz
   same_site: lax
-  secret: AUTHELIA_SESSION_SECRET_FILE
+  # secret: AUTHELIA_SESSION_SECRET_FILE
+  secret: test_credential
   expiration: 3600
   inactivity: 300
   remember_me_duration: 1M
@@ -80,7 +76,8 @@ authentication_backend:
       memory: 1024
 
 storage:
-  encryption_key: AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE
+  # encryption_key: AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE
+  encryption_key: test_credential
 
   local:
     path: /config/db.sqlite3
