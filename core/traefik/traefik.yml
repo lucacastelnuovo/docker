@@ -70,8 +70,6 @@ providers:
     exposedByDefault: false
     watch: true
     network: traefik-proxy
-    # Default host rule to containername.castelnuovo.xyz
-    defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.castelnuovo.xyz`)"
     swarmModeRefreshSeconds: 15s
 
 log:
