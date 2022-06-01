@@ -1,6 +1,6 @@
-host: 0.0.0.0
-port: 9091
-log_level: warn
+server:
+  host: 0.0.0.0
+  port: 9091
 
 jwt_secret: AUTHELIA_JWT_SECRET_FILE
 default_2fa_method: totp
@@ -58,7 +58,7 @@ webauthn:
 
 password_policy:
   standard:
-    enabled: true
+    enabled: false
     min_length: 8
     max_length: 0
     require_uppercase: false
