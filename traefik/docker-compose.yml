@@ -20,7 +20,6 @@ services:
       - ./config.yml:/config.yml:ro
     labels:
       traefik.enable: true
-      traefik.http.routers.traefik.rule: Host(`traefik.castelnuovo.xyz`)
       traefik.http.routers.traefik.entrypoints: https
       traefik.http.routers.traefik.service: api@internal
       traefik.http.routers.traefik.middlewares: auth@file
