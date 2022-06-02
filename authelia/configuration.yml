@@ -32,8 +32,8 @@ access_control:
 
     - domain: proxmox.castelnuovo.xyz
       # subject: group:proxmox.castelnuovo.xyz
-      policy: one_factor
-      # policy: two_factor
+      # policy: one_factor
+      policy: two_factor
 
     # - domain: *.castelnuovo.xyz
     #   subject: group:admins
