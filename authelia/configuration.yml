@@ -1,5 +1,5 @@
 theme: dark
-jwt_secret: "&E)H@McQeThWmZq4t7w!z%C*F-JaNdRg"
+jwt_secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
 default_redirection_url: https://castelnuovo.xyz
 
 log:
@@ -43,7 +43,7 @@ session:
   name: authelia_session
   domain: authelia.castelnuovo.xyz
   same_site: lax
-  secret: "2r5u8x/A?D(G+KaPdSgVkYp3s6v9y$B&"
+  secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
   expiration: 1h
   inactivity: 5m
   remember_me_duration: 1M
@@ -54,7 +54,7 @@ regulation:
   ban_time: 12h
 
 storage:
-  encryption_key: "3t6w9z$C&F)J@NcRfUjXn2r5u8x!A%D*"
+  encryption_key: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
   local:
     path: /config/db.sqlite3
 
