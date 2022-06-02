@@ -2,16 +2,15 @@
 access_control:
   default_policy: deny
   rules:
-    - domain: authelia.castelnuovo.xyz
+
+    - domain:
+        - "authelia.castelnuovo.xyz"
       policy: bypass
 
-    - domain: proxmox.castelnuovo.xyz
-      subject:
-        - 'group:vosjes'
-      policy: one_factor
-
     - domain: "*.castelnuovo.xyz"
-      policy: one_factor
+      # subject:
+        # - "group:admins"
+      policy: two_factor
 
 theme: dark
 jwt_secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh" # TODO: move to a file
@@ -26,9 +25,9 @@ totp:
   disable: false
   issuer: castelnuovo.xyz
 
-webauthn:
-  disable: true
-  display_name: castelnuovo.xyz
+# webauthn:
+#   disable: true
+#   display_name: castelnuovo.xyz
 
 authentication_backend:
   disable_reset_password: true
@@ -56,13 +55,6 @@ storage:
   encryption_key: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh" # TODO: move to a file
   local:
     path: /config/db.sqlite3
-
-  # mysql: # TODO:
-  #   host: mariadb
-  #   port: 3306
-  #   database: authelia
-  #   username: authelia
-  #   password: YOUR_MYSQL_AUTHELIA_DB_PASSWORD
 
 notifier:
   disable_startup_check: false
