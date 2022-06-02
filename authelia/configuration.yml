@@ -9,11 +9,11 @@ log:
 
 totp:
   disable: false
-  issuer: authelia.castelnuovo.xyz
+  issuer: castelnuovo.xyz
 
 webauthn:
   disable: true
-  display_name: authelia.castelnuovo.xyz
+  display_name: castelnuovo.xyz
 
 authentication_backend:
   disable_reset_password: true
@@ -41,7 +41,7 @@ access_control:
 
 session:
   name: authelia_session
-  domain: authelia.castelnuovo.xyz
+  domain: castelnuovo.xyz
   same_site: lax
   secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
   expiration: 1h
