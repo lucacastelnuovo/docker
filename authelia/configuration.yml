@@ -6,7 +6,8 @@ access_control:
       policy: bypass
 
     - domain: proxmox.castelnuovo.xyz
-      subject: group:proxmox.castelnuovo.xyz
+      subject:
+        - 'group:vosjes'
       policy: one_factor
 
     - domain: "*.castelnuovo.xyz"
