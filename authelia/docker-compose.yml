@@ -14,7 +14,7 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.authelia.entryPoints: https
-    environment:
+    # environment:
       # - AUTHELIA_JWT_SECRET_FILE=/config/secrets/jwt
       # - AUTHELIA_SESSION_SECRET_FILE=/config/secrets/session
       # - AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE=/config/secrets/mysql
