@@ -1,10 +1,10 @@
 theme: dark
-jwt_secret: "YOUR_JWT_SECRET"
+jwt_secret: "&E)H@McQeThWmZq4t7w!z%C*F-JaNdRg"
 default_redirection_url: https://castelnuovo.xyz
 
 log:
   level: info
-  file_path: "/config/authelia.log"
+  file_path: /config/authelia.log
   keep_stdout: true
 
 totp:
@@ -27,23 +27,23 @@ authentication_backend:
 access_control:
   default_policy: deny
   rules:
-    - domain: "authelia.castelnuovo.xyz"
+    - domain: authelia.castelnuovo.xyz
       policy: bypass
 
-    - domain: "proxmox.castelnuovo.xyz"
-      # subject: "group:proxmox.castelnuovo.xyz"
+    - domain: proxmox.castelnuovo.xyz
+      # subject: group:proxmox.castelnuovo.xyz
       policy: one_factor
       # policy: two_factor
 
-    # - domain: "*.castelnuovo.xyz"
-    #   subject: "group:admins"
+    # - domain: *.castelnuovo.xyz
+    #   subject: group:admins
     #   policy: one_factor
 
 session:
   name: authelia_session
   domain: authelia.castelnuovo.xyz
   same_site: lax
-  secret: "YOUR_SESSION_SECRET"
+  secret: "2r5u8x/A?D(G+KaPdSgVkYp3s6v9y$B&"
   expiration: 1h
   inactivity: 5m
   remember_me_duration: 1M
@@ -54,7 +54,7 @@ regulation:
   ban_time: 12h
 
 storage:
-  encryption_key: "YOUR_STORAGE_ENCRYPTION_KEY"
+  encryption_key: "3t6w9z$C&F)J@NcRfUjXn2r5u8x!A%D*"
   local:
     path: /config/db.sqlite3
 
@@ -63,7 +63,7 @@ storage:
   #   port: 3306
   #   database: authelia
   #   username: authelia
-  #   password: "YOUR_MYSQL_AUTHELIA_DB_PASSWORD"
+  #   password: YOUR_MYSQL_AUTHELIA_DB_PASSWORD
 
 notifier:
   disable_startup_check: false
@@ -74,7 +74,7 @@ notifier:
   #   host: smtp.mailbox.org
   #   port: 465
   #   username: luca@castelnuovo.xyz
-    # password: "YOUR_EMAIL_PASSWORD"
+    # password: YOUR_EMAIL_PASSWORD
     # sender: "authelia.castelnuovo.xyz <luca@castelnuovo.xyz>" # test with authelia.castelnuovo.xyz
   #   subject: "[authelia.castelnuovo.xyz] {title}"
     # startup_check_address: test@authelia.com
