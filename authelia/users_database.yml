@@ -1,7 +1,7 @@
 users:
   ltcastelnuovo:
     displayname: "L.T. Castelnuovo"
-    password: "$argon2id$v=19$m=65536,t=1,p=8$RVNMT01xZ0ErdzB2N3JXZQ$xCG+tBvHab6y9TFo6/GUorwqt8gNPvu4V5kOkvwd9+M"
+    password: $argon2id$v=19$m=1048576,t=1,p=8$M0x3Tm5yMENoeVdYYnkraQ$j4U2Pf/BodYXc4ltqezo24zbZBCMU6gSTOmQQKKHelE
     email: luca@castelnuovo.xyz
     groups:
       - neet
