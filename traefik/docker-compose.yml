@@ -24,7 +24,7 @@ services:
       traefik.http.routers.traefik.service: api@internal
       traefik.http.routers.traefik.middlewares: auth@file
     environment:
-      CF_DNS_API_TOKEN: ${CLOUDFLARE_TOKEN}
+      CF_DNS_API_TOKEN: ${CLOUDFLARE_TOKEN:?cloudflare token required}
 
 networks:
   traefik-proxy:
