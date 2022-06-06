@@ -29,7 +29,7 @@ webauthn:
   display_name: authelia.castelnuovo.xyz
 
 authentication_backend:
-  disable_reset_password: true
+  disable_reset_password: false
   file:
     path: /config/users_database.yml
     password:
@@ -55,14 +55,10 @@ storage:
 
 notifier:
   disable_startup_check: false
-  filesystem:
-    filename: /config/notification.txt
-
-  # smtp: # TODO:
-  #   host: smtp.mailbox.org
-  #   port: 465
-  #   username: luca@castelnuovo.xyz
-    # password: YOUR_EMAIL_PASSWORD
-    # sender: "authelia.castelnuovo.xyz <luca@castelnuovo.xyz>" # test with authelia.castelnuovo.xyz
-  #   subject: "[authelia.castelnuovo.xyz] {title}"
-    # startup_check_address: test@authelia.com
+  smtp:
+    host: smtp.mailbox.org
+    port: 465
+    username: luca@castelnuovo.xyz
+    sender: "authelia.castelnuovo.xyz <auth@castelnuovo.xyz>"
+    subject: "[authelia.castelnuovo.xyz] {title}"
+    startup_check_address: test@authelia.com
