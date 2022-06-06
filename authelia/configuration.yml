@@ -23,11 +23,11 @@ log:
 
 totp:
   disable: false
-  issuer: castelnuovo.xyz
+  issuer: authelia.castelnuovo.xyz
 
-# webauthn:
-#   disable: true
-#   display_name: castelnuovo.xyz
+webauthn:
+  disable: true
+  display_name: authelia.castelnuovo.xyz
 
 authentication_backend:
   disable_reset_password: true
