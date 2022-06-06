@@ -13,7 +13,7 @@ access_control:
       policy: two_factor
 
 theme: dark
-jwt_secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh" # TODO: move to a file
+# jwt_secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
 default_redirection_url: https://castelnuovo.xyz
 
 log:
@@ -41,7 +41,7 @@ session:
   name: authelia_session
   domain: castelnuovo.xyz
   same_site: lax
-  secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh" # TODO: move to a file
+  # secret: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh" # TODO: move to a file
   expiration: 1h
   inactivity: 5m
   remember_me_duration: 1M
@@ -52,7 +52,7 @@ regulation:
   ban_time: 12h
 
 storage:
-  encryption_key: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh" # TODO: move to a file
+  # encryption_key: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh" # TODO: move to a file
   local:
     path: /config/db.sqlite3
 

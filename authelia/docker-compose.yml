@@ -14,11 +14,11 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.authelia.entryPoints: https
-    # environment: # TODO: https://www.authelia.com/docs/configuration/secrets.html
-      # - AUTHELIA_JWT_SECRET_FILE=/config/secrets/jwt
-      # - AUTHELIA_SESSION_SECRET_FILE=/config/secrets/session
-      # - AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE=/config/secrets/smtp
-      # - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/config/secrets/encryption
+    environment:
+      AUTHELIA_JWT_SECRET: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
+      AUTHELIA_SESSION_SECRET: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
+      AUTHELIA_STORAGE_ENCRYPTION_KEY: "2pdBxDeYXgbtDmIwhhvlDejNtZrdW8Z25ke4qaYQQDQ06Yudna7i4R4JbXTRZtVh"
+      # AUTHELIA_NOTIFIER_SMTP_PASSWORD: "/config/secrets/smtp"
 
 networks:
   traefik-proxy:
