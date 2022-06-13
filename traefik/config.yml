@@ -51,7 +51,7 @@ http:
         referrerPolicy: same-origin
         contentTypeNosniff: true
         browserXssFilter: true
-        frameDeny: true
+        customFrameOptionsValue: SAMEORIGIN
         forceSTSHeader: true
         stsIncludeSubdomains: true
         stsSeconds: 63072000
