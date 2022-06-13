@@ -8,8 +8,8 @@ access_control:
 
     - domain: email.castelnuovo.xyz
       policy: bypass
-      # resources:
-        # - "^/v1([/?].*)?$"
+      resources:
+        - "^/v1([/?].*)?$"
 
     - domain: "*.castelnuovo.xyz"
       # subject:
