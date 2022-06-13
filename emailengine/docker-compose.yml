@@ -13,24 +13,9 @@ services:
       traefik.enable: true
       traefik.http.routers.email.entryPoints: https
       traefik.http.services.email.loadbalancer.server.port: 3000
-    depends_on:
-      - redis
     environment:
       EENGINE_SECRET: ${EENGINE_SECRET:?error}
       EENGINE_REDIS: 'redis://redis:6379/2'
-
-  redis:
-    image: redis:alpine
-    restart: unless-stopped
-      #   security_opt:
-  #     - no-new-privileges:true
-  #   network_mode: host
-  #   volumes:
-  #     - ./redis:/data
-    volumes:
-        - /data
-    # ports:
-      # - '6379'
 
 networks:
   traefik-proxy:

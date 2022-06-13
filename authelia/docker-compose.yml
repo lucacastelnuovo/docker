@@ -9,11 +9,11 @@ services:
       - no-new-privileges:true
     networks:
       - traefik-proxy
-    volumes:
-      - .:/config
     labels:
       traefik.enable: true
       traefik.http.routers.authelia.entryPoints: https
+    volumes:
+      - .:/config
     environment:
       AUTHELIA_JWT_SECRET: ${AUTHELIA_JWT_SECRET:?error}
       AUTHELIA_SESSION_SECRET: ${AUTHELIA_SESSION_SECRET:?error}
