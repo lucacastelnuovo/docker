@@ -22,7 +22,6 @@ services:
       traefik.enable: true
       traefik.http.routers.traefik.entrypoints: https
       traefik.http.routers.traefik.service: api@internal
-      traefik.http.routers.traefik.middlewares: auth@file
     environment:
       CF_DNS_API_TOKEN: ${CLOUDFLARE_TOKEN:?cloudflare token required}
 

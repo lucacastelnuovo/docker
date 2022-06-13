@@ -5,8 +5,6 @@ http:
         - https
       rule: "Host(`proxmox.castelnuovo.xyz`)"
       service: proxmox
-      middlewares:
-        - auth
 
   services:
     proxmox:

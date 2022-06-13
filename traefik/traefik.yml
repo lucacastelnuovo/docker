@@ -57,6 +57,7 @@ entryPoints:
               - "*.castelnuovo.xyz"
       middlewares:
         - securityHeaders@file
+        - auth@file
 
 providers:
   providersThrottleDuration: 2s
