@@ -3,9 +3,13 @@ access_control:
   default_policy: deny
   rules:
 
-    - domain:
-        - "authelia.castelnuovo.xyz"
+    - domain: authelia.castelnuovo.xyz
       policy: bypass
+
+    - domain: email.castelnuovo.xyz
+      policy: bypass
+      # resources:
+        # - "^/v1([/?].*)?$"
 
     - domain: "*.castelnuovo.xyz"
       # subject:
