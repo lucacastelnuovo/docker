@@ -1,27 +1,32 @@
-version: "3.7"
+version: '3.7'
 
 services:
-    email:
-        image: andris9/emailengine:latest
-        container_name: email
-        restart: unless-stopped
-        security_opt:
-          - no-new-privileges:true
-        networks:
-          - traefik-proxy
-        labels:
-          traefik.enable: true
-          traefik.http.routers.email.entryPoints: https
-          traefik.http.services.email.loadbalancer.server.port: 3000
-        ports:
-            - '3000:3000'
-        depends_on:
-            - redis
-        environment:
-            EENGINE_SECRET: ${EENGINE_SECRET:?error}
-            EENGINE_REDIS: 'redis://redis:6379/2'
+  email:
+    image: andris9/emailengine:latest
+    container_name: email
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.email.entryPoints: https
+      traefik.http.services.email.loadbalancer.server.port: 3000
+    ports:
+      - '3000:3000'
+    depends_on:
+      - redis
+    environment:
+      EENGINE_SECRET: ${EENGINE_SECRET:?error}
+      EENGINE_REDIS: redis://redis:6379/2
 
-    redis:
-        image: redis:alpine
-        volumes:
-            - /data
+  redis:
+    image: redis:alpine
+    volumes:
+      - /data
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
