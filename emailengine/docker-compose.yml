@@ -15,7 +15,7 @@ services:
       traefik.http.services.email.loadbalancer.server.port: 3000
     environment:
       EENGINE_SECRET: ${EENGINE_SECRET:?error}
-      EENGINE_REDIS: 'redis://redis:6379/emailengine'
+      EENGINE_REDIS: 'redis://redis:6379/2'
 
 networks:
   traefik-proxy:
