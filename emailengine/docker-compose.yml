@@ -21,6 +21,10 @@ services:
 
   redis:
     image: redis:alpine
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    network_mode: host
     volumes:
       - /data
 
