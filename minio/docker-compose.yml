@@ -11,12 +11,16 @@ services:
       - traefik-proxy
     labels:
       traefik.enable: true
-      traefik.http.routers.storage.entryPoints: https
-      traefik.http.services.storage.loadbalancer.server.port: 9000
 
-      # traefik.http.routers.storage-console.rule: Host(`storage-console.castelnuovo.xyz`)
-      # traefik.http.routers.storage-console.entryPoints: https
-      # traefik.http.services.storage-console.loadbalancer.server.port: 9001
+      traefik.http.routers.storage.rule: Host(`storage.castelnuovo.xyz`)
+      traefik.http.routers.storage.entrypoints: https
+      traefik.http.routers.storage.service: svc_storage
+      traefik.http.services.svc_storage.loadbalancer.server.port: 9000
+
+      traefik.http.routers.storage-console.rule: Host(`storage-console.castelnuovo.xyz`)
+      traefik.http.routers.storage-console.entrypoints: https
+      traefik.http.routers.storage-console.service: svc_storage-console
+      traefik.http.services.svc_storage-console.loadbalancer.server.port: 9001
     volumes:
       - ./data:/data
     environment:
