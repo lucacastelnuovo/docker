@@ -14,9 +14,9 @@ services:
       traefik.http.routers.storage.entryPoints: https
       traefik.http.services.storage.loadbalancer.server.port: 9000
 
-      traefik.http.routers.storage-console.entryPoints: https
-      traefik.http.services.storage-console.loadbalancer.server.port: 9001
-      traefik.http.routers.storage-console.rule: Host(`storage-console.castelnuovo.xyz`)
+      # traefik.http.routers.storage-console.rule: Host(`storage-console.castelnuovo.xyz`)
+      # traefik.http.routers.storage-console.entryPoints: https
+      # traefik.http.services.storage-console.loadbalancer.server.port: 9001
     volumes:
       - ./data:/data
     environment:
