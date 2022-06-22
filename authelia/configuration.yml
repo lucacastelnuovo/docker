@@ -60,9 +60,9 @@ storage:
 notifier:
   disable_startup_check: false
   smtp:
-    host: smtp.mailbox.org
-    port: 465
-    username: luca@castelnuovo.xyz
+    host: ip.castelnuovo.xyz
+    port: 587
+    username: luca
     sender: "authelia.castelnuovo.xyz <auth@castelnuovo.xyz>"
     subject: "[authelia.castelnuovo.xyz] {title}"
     startup_check_address: test@authelia.com
