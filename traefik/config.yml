@@ -10,7 +10,7 @@ http:
     proxmox:
       loadBalancer:
         servers:
-          - url: https://teresa.ltc:8006
+          - url: https://teresa.local.castelnuovo.xyz:8006
 
   middlewares:
     # Authelia guard
