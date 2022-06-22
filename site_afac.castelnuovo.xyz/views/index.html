@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>afac.castelnuovo.xyz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="columns six">
+                <div class="row">
+                    <h1>afac.castelnuovo.xyz</h1>
+                    <p>Kijk nu of je swapfiets gevonden is!</p>
+                </div>
+
+                <div class="hr">
+                    <h3>Lookup</h3>
+                </div>
+
+                <form id="lookupForm" method="post" action="/action/subscribe">
+                    <div class="row">
+                        <label for="frameNumberLookup">
+                            <a href="swapfiets.png" target="_blank">
+                                Je swapnummer (klik om te zien waar je dit
+                                kan vinden)
+                            </a>
+                        </label>
+                        <input class="u-full-width" type="number" required="required" placeholder="19570609"
+                            id="frameNumberLookup" name="frameNumber" />
+                    </div>
+
+                    <div class="row">
+                        <button class="button-primary u-full-width" type="button" id="lookup">
+                            Zoek mijn fiets
+                        </button>
+                    </div>
+
+                    <div class="row">
+                        <textarea class="u-full-width" id="exampleMessage" style="resize: vertical;" readonly>
+                        {
+                            "bike":{
+                            "color":"zilver",
+                            "img_url":"https://www.verlorenofgevonden.nl/assets/image/(.ObjectId)"
+                            },
+                            "objectnr":"F0518f-GM0518-FG-360360",
+                            "storage":{
+                            "adres":"",
+                            "city":"Den Haag ",
+                            "name":"Gemeente Den Haag",
+                            "phone":"070-752 8800",
+                            "postcode":"",
+                            "website":"http://www.fietsdepothaaglanden.nl"
+                            }
+                            }
+                        </textarea>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <hr />
+                </div>
+
+                <div class="hr">
+                    <h3>Subscribe</h3>
+                </div>
+
+                <form id="subscriptionForm" method="post" action="/action/subscribe">
+                    <div class="row">
+                        <label for="email">Je email</label>
+                        <input class="u-full-width" type="email" required="required" placeholder="test@castelnuovo.xyz"
+                            id="email" name="email" />
+                    </div>
+
+                    <div class="row">
+                        <label for="frameNumberSubscription">
+                            <a href="swapfiets.png" target="_blank">
+                                Je swapnummer (klik om te zien waar je dit
+                                kan vinden)
+                            </a>
+                        </label>
+                        <input class="u-full-width" type="number" required="required" placeholder="19570609"
+                            id="frameNumberSubscription" name="frameNumber" />
+                    </div>
+
+                    <div class="row">
+                        <button class="button-primary u-full-width" type="button" id="subscribe">
+                            Aanmelden voor updates
+                        </button>
+                    </div>
+
+                    <div class="row">
+                        <button class="button u-full-width" type="button" id="unsubscribe">
+                            Afmelden van updates
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

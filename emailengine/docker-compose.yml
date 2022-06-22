@@ -16,6 +16,8 @@ services:
     environment:
       EENGINE_SECRET: ${EENGINE_SECRET:?error}
       EENGINE_REDIS: 'redis://redis:6379/2'
+    ports:
+      - 587:587
 
 networks:
   traefik-proxy:
