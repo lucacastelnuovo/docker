@@ -58,7 +58,7 @@ storage:
     path: /config/db.sqlite3
 
 notifier:
-  disable_startup_check: false
+  disable_startup_check: true
   smtp:
     host: ip.castelnuovo.xyz
     port: 587
