@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  shlink:
+    image: shlinkio/shlink:stable
+    container_name: shlink
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.shlink.entryPoints: https
+      traefik.http.services.shlink.loadbalancer.server.port: 9011
+      traefik.http.routers.shlink.rule: Host(`castelnuovo.xyz`)
+    environment:
+      DEFAULT_DOMAIN: castelnuovo.xyz
+      IS_HTTPS_ENABLED: true
+      GEOLITE_LICENSE_KEY: ${GEOLITE_LICENSE_KEY:?error}
+      TIMEZONE: Europe/Amsterdam
+      DB_DRIVER: mysql
+      DB_HOST: mariadb
+      DB_NAME: db_shlink
+      DB_USER: ${DATABASE_USERNAME:?error}
+      DB_PASSWORD: ${DATABASE_PASSWORD:?error}
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
