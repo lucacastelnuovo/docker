@@ -10,7 +10,7 @@ services:
     networks:
       - traefik-proxy
     labels:
-     traefik.enable: true
+      traefik.enable: true
       traefik.http.routers.s3.entryPoints: https
       traefik.http.services.s3.loadbalancer.server.port: 3000
 
