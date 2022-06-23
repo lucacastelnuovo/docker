@@ -11,8 +11,8 @@ services:
       - traefik-proxy
     labels:
       traefik.enable: true
-      traefik.http.routers.email.entryPoints: https
-      traefik.http.services.email.loadbalancer.server.port: 9011
+      traefik.http.routers.fusionauth.entryPoints: https
+      traefik.http.services.fusionauth.loadbalancer.server.port: 9011
     volumes:
       - ./config:/usr/local/fusionauth/config
     environment:

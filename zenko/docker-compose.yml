@@ -11,8 +11,8 @@ services:
     #   - traefik-proxy
     # labels:
     #   traefik.enable: true
-    #   traefik.http.routers.email.entryPoints: https
-    #   traefik.http.services.email.loadbalancer.server.port: 8000
+    #   traefik.http.routers.s3.entryPoints: https
+    #   traefik.http.services.s3.loadbalancer.server.port: 8000
     environment:
       SCALITY_ACCESS_KEY_ID: ${SCALITY_ACCESS_KEY_ID:?error}
       SCALITY_SECRET_ACCESS_KEY: ${SCALITY_SECRET_ACCESS_KEY:?error}
