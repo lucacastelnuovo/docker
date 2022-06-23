@@ -34,19 +34,6 @@ services:
     ports:
       - 5432:5432
 
-  redis:
-    image: redis:7.0.2
-    container_name: redis
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    networks:
-      - traefik-proxy
-    volumes:
-      - ./redis:/data
-    # ports:
-    #   - 6379:6379
-
 networks:
   traefik-proxy:
     driver: bridge
