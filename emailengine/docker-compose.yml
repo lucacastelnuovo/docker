@@ -16,8 +16,31 @@ services:
     environment:
       EENGINE_SECRET: ${EENGINE_SECRET:?error}
       EENGINE_REDIS: 'redis://redis:6379/2'
+      EENGINE_SETTINGS: >
+        {
+            "smtpServerEnabled": true,
+            "smtpServerPort": 587,
+            "smtpServerHost": "0.0.0.0",
+            "smtpServerAuthEnabled": true,
+            "smtpServerPassword": ""
+        }
+    depends_on:
+      - email-redis
     ports:
       - 587:587
+
+  email-redis:
+    image: redis:latest
+    container_name: email-redis
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    volumes:
+        - ./redis:/data
+    expose:
+      - 6379
 
 networks:
   traefik-proxy:
