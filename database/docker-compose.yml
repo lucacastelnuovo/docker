@@ -2,17 +2,52 @@ version: "3"
 
 services:
   mariadb:
-    image: linuxserver/mariadb:latest
+    image: mariadb:10.7.4
     container_name: mariadb
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
-    environment:
-      TZ: Europe/Amsterdam
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?error}
-      MYSQL_USER: ${MYSQL_USER:?error}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?error}
+    networks:
+      - traefik-proxy
     volumes:
       - ./mariadb:/config
+    environment:
+      TZ: Europe/Amsterdam
+      MYSQL_DATABASE: defaultdb
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?error}
     ports:
-      - 3306:3306/tcp
+      - 3306:3306
+
+  postgres:
+    image: postgres:14.4
+    container_name: postgres
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ${POSTGES_ROOT_PASSWORD:?error}
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis:7.0.2
+    container_name: redis
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    volumes:
+      - ./redis:/data
+    ports:
+      - 6379:6379
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
