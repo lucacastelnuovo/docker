@@ -6,6 +6,9 @@ access_control:
     - domain: authelia.castelnuovo.xyz
       policy: bypass
 
+    - domain: castelnuovo.xyz
+      policy: bypass
+
     - domain: email.castelnuovo.xyz
       policy: bypass
       resources:
