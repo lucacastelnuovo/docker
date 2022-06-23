@@ -12,7 +12,6 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.shlink.entryPoints: https
-      traefik.http.services.shlink.loadbalancer.server.port: 9011
       traefik.http.routers.shlink.rule: Host(`castelnuovo.xyz`)
     environment:
       DEFAULT_DOMAIN: castelnuovo.xyz
