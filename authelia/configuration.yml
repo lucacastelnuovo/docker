@@ -65,4 +65,3 @@ notifier:
     username: luca
     sender: "authelia.castelnuovo.xyz <auth@castelnuovo.xyz>"
     subject: "[authelia.castelnuovo.xyz] {title}"
-    startup_check_address: test@authelia.com
