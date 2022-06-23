@@ -25,5 +25,3 @@ services:
       FUSIONAUTH_APP_RUNTIME_MODE: production
       FUSIONAUTH_APP_URL: https://fusionauth.castelnuovo.xyz
       SEARCH_TYPE: database
-    ports:
-      - 9011:9011
