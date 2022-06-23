@@ -23,6 +23,7 @@ services:
       DB_NAME: db_shlink
       DB_USER: ${DATABASE_USERNAME:?error}
       DB_PASSWORD: ${DATABASE_PASSWORD:?error}
+      DEFAULT_BASE_URL_REDIRECT: https://lucacastelnuovo.nl
 
 networks:
   traefik-proxy:
