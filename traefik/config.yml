@@ -6,11 +6,22 @@ http:
       rule: "Host(`proxmox.castelnuovo.xyz`)"
       service: proxmox
 
+    media-plex:
+      entryPoints:
+        - https
+      rule: "Host(`media.castelnuovo.xyz`)"
+      service: media-plex
+
   services:
     proxmox:
       loadBalancer:
         servers:
           - url: https://teresa.local.castelnuovo.xyz:8006
+
+    media-plex:
+      loadBalancer:
+        servers:
+          - url: http://media.local.castelnuovo.xyz:32400
 
   middlewares:
     # Authelia guard
