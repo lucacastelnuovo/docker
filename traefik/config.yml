@@ -6,11 +6,41 @@ http:
       rule: "Host(`proxmox.castelnuovo.xyz`)"
       service: proxmox
 
+    media-jackett:
+      entryPoints:
+        - https
+      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/jackett/`)"
+      service: media-jackett
+
+    media-qbittorrent:
+      entryPoints:
+        - https
+      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/qbittorrent/`)"
+      service: media-qbittorrent
+
+    media-sonarr:
+      entryPoints:
+        - https
+      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/sonarr/`)"
+      service: media-sonarr
+
+    media-radarr:
+      entryPoints:
+        - https
+      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/radarr/`)"
+      service: media-radarr
+
     media-plex:
       entryPoints:
         - https
       rule: "Host(`media.castelnuovo.xyz`)"
       service: media-plex
+
+    media-ombi:
+      entryPoints:
+        - https
+      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/ombi/`)"
+      service: media-ombi
 
   services:
     proxmox:
@@ -18,10 +48,35 @@ http:
         servers:
           - url: https://teresa.local.castelnuovo.xyz:8006
 
+    media-jackett:
+      loadBalancer:
+        servers:
+          - url: http://media.local.castelnuovo.xyz:9117
+
+    media-qbittorrent:
+      loadBalancer:
+        servers:
+          - url: http://media.local.castelnuovo.xyz:8080
+
+    media-sonarr:
+      loadBalancer:
+        servers:
+          - url: http://media.local.castelnuovo.xyz:8989
+
+    media-radarr:
+      loadBalancer:
+        servers:
+          - url: http://media.local.castelnuovo.xyz:7878
+
     media-plex:
       loadBalancer:
         servers:
           - url: http://media.local.castelnuovo.xyz:32400
+
+    media-ombi:
+      loadBalancer:
+        servers:
+          - url: http://media.local.castelnuovo.xyz:3579
 
   middlewares:
     # Authelia guard
