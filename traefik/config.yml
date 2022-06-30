@@ -9,25 +9,25 @@ http:
     media-jackett:
       entryPoints:
         - https
-      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/jackett/`)"
+      rule: "Host(`jackett.castelnuovo.xyz`)"
       service: media-jackett
 
     media-qbittorrent:
       entryPoints:
         - https
-      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/qbittorrent/`)"
+      rule: "Host(`qbittorrent.castelnuovo.xyz`)"
       service: media-qbittorrent
 
     media-sonarr:
       entryPoints:
         - https
-      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/sonarr/`)"
+      rule: "Host(`sonarr.castelnuovo.xyz`)"
       service: media-sonarr
 
     media-radarr:
       entryPoints:
         - https
-      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/radarr/`)"
+      rule: "Host(`radarr.castelnuovo.xyz`)"
       service: media-radarr
 
     media-plex:
@@ -39,7 +39,7 @@ http:
     media-ombi:
       entryPoints:
         - https
-      rule: "Host(`media.castelnuovo.xyz`) && PathPrefix(`/ombi/`)"
+      rule: "Host(`ombi.castelnuovo.xyz`)"
       service: media-ombi
 
   services:
