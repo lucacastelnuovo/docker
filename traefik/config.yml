@@ -36,12 +36,6 @@ http:
       rule: "Host(`media.castelnuovo.xyz`)"
       service: media-plex
 
-    media-ombi:
-      entryPoints:
-        - https
-      rule: "Host(`ombi.castelnuovo.xyz`)"
-      service: media-ombi
-
   services:
     proxmox:
       loadBalancer:
@@ -72,11 +66,6 @@ http:
       loadBalancer:
         servers:
           - url: http://media.local.castelnuovo.xyz:32400
-
-    media-ombi:
-      loadBalancer:
-        servers:
-          - url: http://media.local.castelnuovo.xyz:3579
 
   middlewares:
     # Authelia guard
