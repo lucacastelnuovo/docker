@@ -16,8 +16,6 @@ access_control:
 
     - domain: media.castelnuovo.xyz
       policy: bypass
-      resources:
-        - "^/v1([/?].*)?$"
 
     - domain: "*.castelnuovo.xyz"
       # subject:
