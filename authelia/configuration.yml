@@ -13,6 +13,7 @@ access_control:
       policy: bypass
       resources:
         - "^/v1([/?].*)?$"
+        - "^/.well-known([/?].*)?$"
 
     - domain: media.castelnuovo.xyz
       policy: bypass
