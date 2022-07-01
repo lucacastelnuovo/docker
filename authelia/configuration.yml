@@ -14,6 +14,11 @@ access_control:
       resources:
         - "^/v1([/?].*)?$"
 
+    - domain: media.castelnuovo.xyz
+      policy: bypass
+      resources:
+        - "^/v1([/?].*)?$"
+
     - domain: "*.castelnuovo.xyz"
       # subject:
         # - "group:admins"
