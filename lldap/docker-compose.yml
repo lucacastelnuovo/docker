@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  ldap:
+    image: nitnelave/lldap:stable
+    container_name: ldap
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.ldap.entrypoints: https
+      traefik.http.services.ldap.loadbalancer.server.port: 17170
+    volumes:
+      - ./data:/data
+    environment:
+      LLDAP_JWT_SECRET: ${LLDAP_JWT_SECRET:?error}
+      LLDAP_LDAP_USER_PASS: ${LLDAP_LDAP_USER_PASS:?error}
+      LLDAP_SMTP_OPTIONS__PASSWORD: ${LLDAP_SMTP_OPTIONS__PASSWORD:?error}
+    ports:
+      - 389:3890
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
