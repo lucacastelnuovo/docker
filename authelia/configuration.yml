@@ -1,11 +1,11 @@
-# TODO: https://docs.authelia.com/configuration/access-control.html
+# TODO: https://www.authelia.com/configuration/security/access-control/
 access_control:
   default_policy: deny
   rules:
-    - domain: authelia.castelnuovo.xyz
-      policy: bypass
-
-    - domain: castelnuovo.xyz
+    - domain:
+        - castelnuovo.xyz
+        - authelia.castelnuovo.xyz
+        - media.castelnuovo.xyz
       policy: bypass
 
     - domain: email.castelnuovo.xyz
@@ -13,9 +13,6 @@ access_control:
       resources:
         - "^/v1([/?].*)?$"
         - "^/.well-known([/?].*)?$"
-
-    - domain: media.castelnuovo.xyz
-      policy: bypass
 
     - domain: "*.castelnuovo.xyz"
       # subject:
@@ -40,7 +37,7 @@ webauthn:
 
 authentication_backend:
   password_reset:
-    disable: false
+    disable: true
     custom_url: "https://ldap.castelnuovo.xyz/reset-password/step1"
   refresh_interval: 1m
   ldap:
