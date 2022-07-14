@@ -20,7 +20,7 @@ services:
       LLDAP_LDAP_USER_PASS: ${LLDAP_LDAP_USER_PASS:?error}
       LLDAP_SMTP_OPTIONS__PASSWORD: ${LLDAP_SMTP_OPTIONS__PASSWORD:?error}
     ports:
-      - 389:3890
+      - 389:389
 
 networks:
   traefik-proxy:

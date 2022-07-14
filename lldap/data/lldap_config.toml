@@ -8,7 +8,7 @@
 # verbose=false
 
 ## The port on which to have the LDAP server.
-#ldap_port = 3890
+ldap_port = 389
 
 ## The port on which to have the HTTP server, for user login and
 ## administration.
