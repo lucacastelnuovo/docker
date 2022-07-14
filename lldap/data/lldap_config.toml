@@ -98,7 +98,7 @@ key_file = "/data/private_key"
 ## Whether to enabled password reset via email, from LLDAP.
 #enable_password_reset=true
 ## The SMTP server.
-server="email"
+server="ip.castelnuovo.xyz"
 ## The SMTP port.
 port=587
 ## Whether to connect with TLS.
