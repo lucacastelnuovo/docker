@@ -94,24 +94,24 @@ key_file = "/data/private_key"
 ## Options to configure SMTP parameters, to send password reset emails.
 ## To set these options from environment variables, use the following format
 ## (example with "password"): LLDAP_SMTP_OPTIONS__PASSWORD
-#[smtp_options]
-## Whether to enabled password reset via email, from LLDAP.
-#enable_password_reset=true
-## The SMTP server.
-server="ip.castelnuovo.xyz"
-## The SMTP port.
-port=587
-## Whether to connect with TLS.
-tls_required=true
-## The SMTP user, usually your email address.
-user="ldap@castelnuovo.xyz"
-## The SMTP password.
-#password="password"
-## The header field, optional: how the sender appears in the email. The first
-## is a free-form name, followed by an email between <>.
-# from="LLDAP Admin <sender@gmail.com>"
-## Same for reply-to, optional.
-#reply_to="Do not reply <noreply@localhost>"
+[smtp_options]
+    ## Whether to enabled password reset via email, from LLDAP.
+    enable_password_reset=true
+    ## The SMTP server.
+    server="ip.castelnuovo.xyz"
+    ## The SMTP port.
+    port=587
+    ## Whether to connect with TLS.
+    tls_required=true
+    ## The SMTP user, usually your email address.
+    user="ldap@castelnuovo.xyz"
+    ## The SMTP password.
+    #password="password"
+    ## The header field, optional: how the sender appears in the email. The first
+    ## is a free-form name, followed by an email between <>.
+    # from="LLDAP Admin <sender@gmail.com>"
+    ## Same for reply-to, optional.
+    #reply_to="Do not reply <noreply@localhost>"
 
 ## Options to configure LDAPS.
 ## To set these options from environment variables, use the following format
