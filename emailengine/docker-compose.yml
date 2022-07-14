@@ -16,7 +16,8 @@ services:
       traefik.http.services.email.loadbalancer.server.port: 3000
     environment:
       EENGINE_SECRET: ${EENGINE_SECRET:?error}
-      EENGINE_REDIS: 'redis://email-redis:6379/2'
+      EENGINE_PREPARED_TOKEN: ${EENGINE_PREPARED_TOKEN:?error}
+      EENGINE_REDIS: "redis://email-redis:6379/2"
       EENGINE_SETTINGS: >
         {
             "smtpServerEnabled": true,
@@ -39,7 +40,7 @@ services:
     networks:
       - email-redis-bridge
     volumes:
-        - ./redis:/data
+      - ./redis:/data
     expose:
       - 6379
 
