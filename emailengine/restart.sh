@@ -52,3 +52,4 @@ curl -XPOST "https://email.castelnuovo.xyz/v1/account" \
 echo \n
 echo "Create SMTP tokens for:"
 echo "1. ldap.castelnuovo.xyz"
+echo "2. authelia.castelnuovo.xyz"
