@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  stats:
+    image: ghcr.io/umami-software/umami:mysql-v1.33.3
+    container_name: stats
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.stats.entryPoints: https
+      traefik.http.services.stats.loadbalancer.server.port: 3000
+    environment:
+      DATABASE_URL: mysql://root:root@mariadb:3306/defaultdb
+      DATABASE_TYPE: mysql
+      HASH_SALT: 8FF29D3FFB69D879D7293D256EDABF49DD8AC139F17B344766F8D7D2AA
+      DISABLE_LOGIN: true
+      DISABLE_TELEMETRY: true
+      REMOVE_TRAILING_SLASH: true
+      TRACKER_SCRIPT_NAME: stats
+      HOSTNAME: stats.castelnuovo.xyz
+    ports:
+      - 3000:3000
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
