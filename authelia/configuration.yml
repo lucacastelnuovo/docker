@@ -38,7 +38,7 @@ webauthn:
 authentication_backend:
   password_reset:
     disable: true
-    custom_url: "https://ldap.castelnuovo.xyz/reset-password/step1"
+    custom_url: ""
   refresh_interval: 1m
   ldap:
     implementation: custom
