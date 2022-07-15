@@ -12,36 +12,6 @@ http:
       rule: "Host(`email.castelnuovo.xyz`)"
       service: postal
 
-    media-jackett:
-      entryPoints:
-        - https
-      rule: "Host(`jackett.castelnuovo.xyz`)"
-      service: media-jackett
-
-    media-qbittorrent:
-      entryPoints:
-        - https
-      rule: "Host(`qbittorrent.castelnuovo.xyz`)"
-      service: media-qbittorrent
-
-    media-sonarr:
-      entryPoints:
-        - https
-      rule: "Host(`sonarr.castelnuovo.xyz`)"
-      service: media-sonarr
-
-    media-radarr:
-      entryPoints:
-        - https
-      rule: "Host(`radarr.castelnuovo.xyz`)"
-      service: media-radarr
-
-    media-plex:
-      entryPoints:
-        - https
-      rule: "Host(`media.castelnuovo.xyz`)"
-      service: media-plex
-
   services:
     proxmox:
       loadBalancer:
@@ -52,31 +22,6 @@ http:
       loadBalancer:
         servers:
           - url: http://postal.local.castelnuovo.xyz:5000
-
-    media-jackett:
-      loadBalancer:
-        servers:
-          - url: http://media.local.castelnuovo.xyz:9117
-
-    media-qbittorrent:
-      loadBalancer:
-        servers:
-          - url: http://media.local.castelnuovo.xyz:8080
-
-    media-sonarr:
-      loadBalancer:
-        servers:
-          - url: http://media.local.castelnuovo.xyz:8989
-
-    media-radarr:
-      loadBalancer:
-        servers:
-          - url: http://media.local.castelnuovo.xyz:7878
-
-    media-plex:
-      loadBalancer:
-        servers:
-          - url: http://media.local.castelnuovo.xyz:32400
 
   middlewares:
     # Authelia guard
