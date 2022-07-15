@@ -6,6 +6,12 @@ http:
       rule: "Host(`proxmox.castelnuovo.xyz`)"
       service: proxmox
 
+    postal:
+      entryPoints:
+        - https
+      rule: "Host(`email.castelnuovo.xyz`)"
+      service: postal
+
     media-jackett:
       entryPoints:
         - https
@@ -41,6 +47,11 @@ http:
       loadBalancer:
         servers:
           - url: https://teresa.local.castelnuovo.xyz:8006
+
+    postal:
+      loadBalancer:
+        servers:
+          - url: http://postal.local.castelnuovo.xyz:5000
 
     media-jackett:
       loadBalancer:
