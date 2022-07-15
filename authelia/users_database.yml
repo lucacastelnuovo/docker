@@ -1,8 +1,0 @@
-users:
-  ltcastelnuovo:
-    displayname: "L.T. Castelnuovo"
-    password: $argon2id$v=19$m=1048576,t=1,p=8$M0x3Tm5yMENoeVdYYnkraQ$j4U2Pf/BodYXc4ltqezo24zbZBCMU6gSTOmQQKKHelE
-    email: luca@castelnuovo.xyz
-    groups:
-      - neet
-      # - proxmox.castelnuovo.xyz
