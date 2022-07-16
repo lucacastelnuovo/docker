@@ -12,6 +12,18 @@ http:
       rule: "Host(`email.castelnuovo.xyz`)"
       service: postal
 
+    postal-rp:
+      entryPoints:
+        - https
+      rule: "Host(`rp.email.castelnuovo.xyz`)"
+      service: postal
+
+    postal-track:
+      entryPoints:
+        - https
+      rule: "Host(`track.email.castelnuovo.xyz`)"
+      service: postal
+
   services:
     proxmox:
       loadBalancer:
