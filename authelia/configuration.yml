@@ -84,3 +84,4 @@ notifier:
     username: luca
     sender: "authelia@email.castelnuovo.xyz"
     subject: "[authelia.castelnuovo.xyz] {title}"
+    disable_require_tls: true
