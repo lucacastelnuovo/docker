@@ -11,13 +11,20 @@ access_control:
     - domain: email.castelnuovo.xyz
       policy: bypass
       resources:
-        - "^/v1([/?].*)?$"
+        - "^/api/v1([/?].*)?$"
         - "^/.well-known([/?].*)?$"
+
+    - domain:
+        - proxmox.castelnuovo.xyz
+        - ldap.castelnuovo.xyz
+        - portainer.castelnuovo.xyz
+        - traefik.castelnuovo.xyz
+      policy: two_factor
 
     - domain: "*.castelnuovo.xyz"
       # subject:
       # - "group:admins"
-      policy: two_factor
+      policy: one_factor
 
 theme: dark
 default_redirection_url: https://authelia.castelnuovo.xyz
