@@ -79,8 +79,8 @@ storage:
 notifier:
   disable_startup_check: true
   smtp:
-    host: ip.castelnuovo.xyz
-    port: 587
+    host: email.local.castelnuovo.xyz
+    port: 25
     username: luca
-    sender: "authelia.castelnuovo.xyz <auth@castelnuovo.xyz>"
+    sender: "authelia@email.castelnuovo.xyz"
     subject: "[authelia.castelnuovo.xyz] {title}"
