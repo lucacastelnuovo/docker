@@ -6,17 +6,17 @@ http:
       rule: "Host(`proxmox.castelnuovo.xyz`)"
       service: proxmox
 
-    postal:
+    email:
       entryPoints:
         - https
       rule: "Host(`email.castelnuovo.xyz`)"
-      service: postal
+      service: email
 
-    postal-rp:
+    email-rp:
       entryPoints:
         - https
       rule: "Host(`rp.email.castelnuovo.xyz`)"
-      service: postal
+      service: email
 
   services:
     proxmox:
@@ -24,10 +24,10 @@ http:
         servers:
           - url: https://teresa.local.castelnuovo.xyz:8006
 
-    postal:
+    email:
       loadBalancer:
         servers:
-          - url: http://postal.local.castelnuovo.xyz:5000
+          - url: http://email.local.castelnuovo.xyz:5000
 
   middlewares:
     # Authelia guard
