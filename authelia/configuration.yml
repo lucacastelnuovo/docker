@@ -5,7 +5,6 @@ access_control:
     - domain:
         - castelnuovo.xyz
         - authelia.castelnuovo.xyz
-        - postal.castelnuovo.xyz
       policy: bypass
 
     - domain: email.castelnuovo.xyz
