@@ -102,7 +102,7 @@ key_file = "/data/private_key"
     ## The SMTP port.
     port=25
     ## Whether to connect with TLS.
-    tls_required=true
+    tls_required=false
     ## The SMTP user, usually your email address.
     user="ldap@email.castelnuovo.xyz"
     ## The SMTP password.
