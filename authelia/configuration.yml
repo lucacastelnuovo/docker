@@ -13,6 +13,12 @@ access_control:
         - "^/api/v1([/?].*)?$"
         - "^/.well-known([/?].*)?$"
 
+    - domain: stats.castelnuovo.xyz
+      policy: bypass
+      resources:
+        - "^/api([/?].*)?$"
+        - "^/js([/?].*)?$"
+
     - domain:
         - proxmox.castelnuovo.xyz
         - ldap.castelnuovo.xyz
