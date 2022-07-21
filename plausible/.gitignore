@@ -3,4 +3,4 @@
 !docker-compose.yml
 !.env.example
 !clickhouse-config.xml
-!cliickhouse-user-config.xml
+!clickhouse-user.xml
