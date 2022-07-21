@@ -15,9 +15,9 @@ access_control:
 
     - domain: stats.castelnuovo.xyz
       policy: bypass
-      resources:
-        - "^/api([/?].*)?$"
-        - "^/js([/?].*)?$"
+      # resources:
+      #   - "^/api([/?].*)?$"
+      #   - "^/js([/?].*)?$"
 
     - domain:
         - proxmox.castelnuovo.xyz
