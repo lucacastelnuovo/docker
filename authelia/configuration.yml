@@ -18,6 +18,7 @@ access_control:
       resources:
         - "^/api([/?].*)?$"
         - "^/js([/?].*)?$"
+        - "^/share([/?].*)?$"
 
     - domain:
         - proxmox.castelnuovo.xyz
