@@ -18,6 +18,7 @@ access_control:
       resources:
         - "^/api([/?].*)?$"
         - "^/js([/?].*)?$"
+        - "^/css([/?].*)?$"
         - "^/share([/?].*)?$"
 
     - domain:
