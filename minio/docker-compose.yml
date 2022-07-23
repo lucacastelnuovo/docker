@@ -22,7 +22,7 @@ services:
     environment:
       MINIO_ROOT_USER: admin
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?error}
-      # MINIO_SERVER_URL: https://s3.castelnuovo.xyz
+      MINIO_SERVER_URL: https://s3.castelnuovo.xyz
       # MINIO_BROWSER_REDIRECT_URL: https://s3-console.castelnuovo.xyz
     volumes:
       - ./data:/data
