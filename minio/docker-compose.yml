@@ -26,7 +26,7 @@ services:
       # MINIO_BROWSER_REDIRECT_URL: https://s3-console.castelnuovo.xyz
     volumes:
       - ./data:/data
-    command: server /data --address "s3.castelnuovo.xyz:9000" --console-address "s3-console.castelnuovo.xyz:9001"
+    command: server /data --console-address ":9001"
 
 networks:
   traefik-proxy:
