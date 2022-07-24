@@ -90,15 +90,21 @@ regulation:
   ban_time: 12h
 
 storage:
-  local:
-    path: /config/db.sqlite3
+  mysql:
+    host: mariadb
+    port: 3306
+    database: db_authelia
+    username: db_authelia
+    timeout: 5s
 
 notifier:
   disable_startup_check: true
-  smtp:
-    host: email.local.castelnuovo.xyz
-    port: 25
-    username: luca
-    sender: "authelia@email.castelnuovo.xyz"
-    subject: "[authelia.castelnuovo.xyz] {title}"
-    disable_require_tls: true
+  filesystem:
+    filename: /config/notification.txt
+  # smtp:
+  #   host: email.local.castelnuovo.xyz
+  #   port: 25
+  #   username: luca
+  #   sender: "authelia@email.castelnuovo.xyz"
+  #   subject: "[authelia.castelnuovo.xyz] {title}"
+  #   disable_require_tls: true
