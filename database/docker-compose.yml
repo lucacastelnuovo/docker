@@ -10,7 +10,7 @@ services:
     networks:
       - traefik-proxy
     volumes:
-      - ./mariadb:/config
+      - ./mariadb:/var/lib/mysql
     environment:
       TZ: Europe/Amsterdam
       MYSQL_DATABASE: defaultdb
