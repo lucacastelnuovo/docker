@@ -19,20 +19,20 @@ auth_service:
 
 ssh_service:
   enabled: "yes"
-  # labels:
-  # env: example
   commands:
     - name: hostname
       command: [hostname]
       period: 1m0s
+  # enhanced_recording:
+    # enabled: true
 
 proxy_service:
   enabled: "yes"
   acme: {}
   https_keypairs: []
   public_addr: teleport.castelnuovo.xyz:443
-  tunnel_public_addr: teleport.castelnuovo.xyz:443
-  # ssh_public_addr: teleport.castelnuovo.xyz:3023
+  ssh_public_addr: teleport.castelnuovo.xyz:3023
+  tunnel_public_addr: teleport.castelnuovo.xyz:3024
 
 app_service:
   enabled: "no"
