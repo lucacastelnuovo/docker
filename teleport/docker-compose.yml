@@ -22,6 +22,7 @@ services:
       - 3023:3023
       - 3024:3024
       - 3025:3025
+      - 3080:3080
 
 networks:
   traefik-proxy:
