@@ -1,4 +1,5 @@
 version: v1
+# version: v2
 
 teleport:
   nodename: teleport.castelnuovo.xyz
@@ -13,10 +14,10 @@ teleport:
 
 auth_service:
   enabled: "yes"
-  listen_addr: 0.0.0.0:3025
   cluster_name: teleport.castelnuovo.xyz
   public_addr: teleport.castlenuovo.xyz:3025
   proxy_listener_mode: separate
+  # proxy_listener_mode: multiplex
 
 ssh_service:
   enabled: "yes"
@@ -24,11 +25,9 @@ ssh_service:
     - name: hostname
       command: [hostname]
       period: 1m0s
-  # enhanced_recording:
-    # enabled: true
 
 proxy_service:
   enabled: "yes"
-  https_keypairs: []
   acme: {}
+  https_keypairs: []
   public_addr: teleport.castelnuovo.xyz:443
