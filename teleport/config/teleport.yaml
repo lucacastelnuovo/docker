@@ -1,7 +1,7 @@
 version: v2
 
 teleport:
-  nodename: teleport.castelnuovo.xyz
+  nodename: teleport
   data_dir: /var/lib/teleport
   log:
     output: stderr
@@ -13,9 +13,10 @@ teleport:
 
 auth_service:
   enabled: "yes"
-  listen_addr: 0.0.0.0:3025
-  proxy_listener_mode: multiplex
-  public_addr: teleport.castlenuovo.xyz:3025
+  # listen_addr: 0.0.0.0:3025
+  cluster_name: teleport.castelnuovo.xyz
+  # public_addr: ip.castlenuovo.xyz:3025
+  # proxy_listener_mode: multiplex
 
 ssh_service:
   enabled: "yes"
@@ -28,17 +29,8 @@ ssh_service:
 
 proxy_service:
   enabled: "yes"
-  acme: {}
-  https_keypairs: []
+  # listen_addr: 0.0.0.0:3023
+  # web_listen_addr: 0.0.0.0:3080
   public_addr: teleport.castelnuovo.xyz:443
-  ssh_public_addr: teleport.castelnuovo.xyz:3023
-  tunnel_public_addr: teleport.castelnuovo.xyz:3024
-
-app_service:
-  enabled: "no"
-
-kubernetes_service:
-  enabled: "no"
-
-windows_desktop_service:
-  enabled: "no"
+  ssh_public_addr: ip.castelnuovo.xyz:3023
+  tunnel_public_addr: ip.castelnuovo.xyz:3024
