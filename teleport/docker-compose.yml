@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  teleport:
+    image: quay.io/gravitational/teleport:10.0.2
+    container_name: teleport
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.teleport.entryPoints: https
+      # traefik.http.services.teleport.loadbalancer.server.port: 9000
+    volumes:
+      - ./config:/etc/teleport
+      - ./data:/var/lib/teleport
+    ports:
+      - 443:443
+      - 3022:3022
+      - 3023:3023
+      - 3036:3036
+      - 3080:3080
+    # hostname: luna.teleport
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
