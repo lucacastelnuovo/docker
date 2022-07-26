@@ -13,7 +13,7 @@ services:
       traefik.enable: true
       traefik.http.routers.teleport.entryPoints: https
       traefik.http.services.teleport.loadbalancer.server.port: 443
-      # traefik.http.services.teleport.loadbalancer.server.scheme: https
+      traefik.http.services.teleport.loadbalancer.server.scheme: https
     volumes:
       - ./config:/etc/teleport
       - ./data:/var/lib/teleport
