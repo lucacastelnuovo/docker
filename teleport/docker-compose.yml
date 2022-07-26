@@ -12,16 +12,14 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.teleport.entryPoints: https
-      traefik.http.services.teleport.loadbalancer.server.port: 3080
+      traefik.http.services.teleport.loadbalancer.server.port: 443
     volumes:
       - ./config:/etc/teleport
       - ./data:/var/lib/teleport
     ports:
-      - 8443:443
       - 3022:3022
       - 3023:3023
-      - 3036:3036
-      - 3080:3080
+      - 3025:3025
     # hostname: luna.teleport
 
 networks:
