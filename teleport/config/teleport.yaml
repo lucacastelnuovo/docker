@@ -1,10 +1,3 @@
-#
-# A Sample Teleport configuration file.
-#
-# Things to update:
-#  1. license.pem: You only need a license from https://dashboard.goteleport.com
-#     if you are an Enterprise customer.
-#
 version: v2
 
 teleport:
@@ -22,7 +15,7 @@ auth_service:
   enabled: "yes"
   listen_addr: 0.0.0.0:3025
   proxy_listener_mode: multiplex
-  public_addr: auth.example.com:3025
+  public_addr: teleport.castlenuovo.xyz:3025
 
 ssh_service:
   enabled: "yes"
@@ -35,9 +28,11 @@ ssh_service:
 
 proxy_service:
   enabled: "yes"
-  public_addr: teleport.castelnuovo.xyz:443
-  # ssh_public_addr: teleport.castelnuovo.xyz:3023
   acme: {}
+  https_keypairs: []
+  public_addr: teleport.castelnuovo.xyz:443
+  tunnel_public_addr: teleport.castelnuovo.xyz:443
+  # ssh_public_addr: teleport.castelnuovo.xyz:3023
 
 app_service:
   enabled: "no"
