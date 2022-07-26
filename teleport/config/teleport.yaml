@@ -8,7 +8,7 @@
 version: v2
 
 teleport:
-  nodename: localhost
+  nodename: teleport.castelnuovo.xyz
   data_dir: /var/lib/teleport
   log:
     output: stderr
