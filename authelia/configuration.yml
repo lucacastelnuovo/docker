@@ -29,7 +29,8 @@ access_control:
         - ldap.castelnuovo.xyz
         - portainer.castelnuovo.xyz
         - traefik.castelnuovo.xyz
-      policy: two_factor
+      policy: one_factor
+      # policy: two_factor
 
     - domain: "*.castelnuovo.xyz"
       # subject:
