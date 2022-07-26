@@ -17,7 +17,7 @@ services:
       - ./config:/etc/teleport
       - ./data:/var/lib/teleport
     ports:
-      - 443:443
+      - 8443:443
       - 3022:3022
       - 3023:3023
       - 3036:3036
