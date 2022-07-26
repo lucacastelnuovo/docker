@@ -35,7 +35,11 @@ ssh_service:
 
 proxy_service:
   enabled: "yes"
-  https_keypairs: []
+  # public_addr: teleport.castelnuovo.xyz:443
+  # ssh_public_addr: teleport.castelnuovo.xyz:3023
+  https_keypairs:
+  - key_file: /var/lib/teleport/webproxy_key.pem
+    cert_file: /var/lib/teleport/webproxy_cert.pem
   acme: {}
 
 app_service:
