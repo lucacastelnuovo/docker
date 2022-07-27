@@ -12,10 +12,12 @@ services:
     labels:
       traefik.enable: true
 
+      traefik.http.routers.s3.entrypoints: https
       traefik.http.routers.s3.rule: Host(`s3.castelnuovo.xyz`)
       traefik.http.routers.s3.service: s3
       traefik.http.services.s3.loadbalancer.server.port: 9000
 
+      traefik.http.routers.s3-console.entrypoints: https
       traefik.http.routers.s3-console.rule: Host(`s3-console.castelnuovo.xyz`)
       traefik.http.routers.s3-console.service: s3-console
       traefik.http.services.s3-console.loadbalancer.server.port: 9001
