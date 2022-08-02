@@ -18,11 +18,11 @@ http:
       rule: "Host(`rp.email.castelnuovo.dev`)"
       service: email
 
-    teleport:
-      entryPoints:
-        - https
-      rule: "Host(`*.teleport.castelnuovo.dev`)"
-      service: teleport
+    # teleport:
+    #   entryPoints:
+    #     - https
+    #   rule: "Host(`*.teleport.castelnuovo.dev`)"
+    #   service: teleport
 
   services:
     proxmox:
@@ -35,10 +35,10 @@ http:
         servers:
           - url: http://email.local.castelnuovo.dev:5000
 
-    teleport:
-      loadBalancer:
-        servers:
-          - url: https://docker.local.castelnuovo.dev:3080
+    # teleport:
+    #   loadBalancer:
+    #     servers:
+    #       - url: https://docker.local.castelnuovo.dev:3080
 
   middlewares:
     # Authelia guard
