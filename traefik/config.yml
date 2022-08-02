@@ -28,17 +28,17 @@ http:
     proxmox:
       loadBalancer:
         servers:
-          - url: https://teresa.local.castelnuovo.dev:8006
+          - url: https://teresa.local.castelnuovo.xyz:8006
 
     email:
       loadBalancer:
         servers:
-          - url: http://email.local.castelnuovo.dev:5000
+          - url: http://email.local.castelnuovo.xyz:5000
 
     # teleport:
     #   loadBalancer:
     #     servers:
-    #       - url: https://docker.local.castelnuovo.dev:3080
+    #       - url: https://docker.local.castelnuovo.xyz:3080
 
   middlewares:
     # Authelia guard

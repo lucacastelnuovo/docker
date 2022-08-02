@@ -100,7 +100,7 @@ notifier:
   filesystem:
     filename: /config/notification.txt
   # smtp:
-  #   host: email.local.castelnuovo.dev
+  #   host: email.local.castelnuovo.xyz
   #   port: 25
   #   username: luca
   #   sender: "authelia@email.castelnuovo.dev"
