@@ -12,7 +12,7 @@ entryPoints:
   http:
     address: :80
     forwardedHeaders:
-      trustedIPs: &trustedIps # Start of Clouflare public IP list
+      trustedIPs: &trustedIps
         - 173.245.48.0/20
         - 103.21.244.0/22
         - 103.22.200.0/22
@@ -35,7 +35,6 @@ entryPoints:
         - 2405:8100::/32
         - 2a06:98c0::/29
         - 2c0f:f248::/32
-        # End of Cloudlare public IP list
     http:
       redirections:
         entryPoint:
@@ -49,7 +48,6 @@ entryPoints:
     http:
       tls:
         certResolver: letsencrypt
-        # Generate a wildcard domain certificate
         domains:
           - main: castelnuovo.dev
             sans:
