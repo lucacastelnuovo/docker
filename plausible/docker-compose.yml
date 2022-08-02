@@ -41,11 +41,11 @@ services:
       CLICKHOUSE_DATABASE_URL: http://stats_events:8123/plausible_events_db
       DISABLE_AUTH: "true"
       DISABLE_REGISTRATION: "true"
-      ADMIN_USER_EMAIL: luca@castelnuovo.xyz
+      ADMIN_USER_EMAIL: luca@castelnuovo.dev
       ADMIN_USER_NAME: Luca Castelnuovo
       ADMIN_USER_PWD: ${ADMIN_USER_PWD:?error}
-      MAILER_EMAIL: stats@email.castelnuovo.xyz
-      SMTP_HOST_ADDR: email.local.castelnuovo.xyz
+      MAILER_EMAIL: stats@email.castelnuovo.dev
+      SMTP_HOST_ADDR: email.local.castelnuovo.dev
       SMTP_USER_NAME: castelnuovo/production
       SMTP_USER_PWD: ${SMTP_USER_PWD:?error}
     command: sh -c "/entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"

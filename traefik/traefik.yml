@@ -12,8 +12,7 @@ entryPoints:
   http:
     address: :80
     forwardedHeaders:
-      trustedIPs: &trustedIps
-        # Start of Clouflare public IP list
+      trustedIPs: &trustedIps # Start of Clouflare public IP list
         - 173.245.48.0/20
         - 103.21.244.0/22
         - 103.22.200.0/22
@@ -52,9 +51,9 @@ entryPoints:
         certResolver: letsencrypt
         # Generate a wildcard domain certificate
         domains:
-          - main: castelnuovo.xyz
+          - main: castelnuovo.dev
             sans:
-              - "*.castelnuovo.xyz"
+              - "*.castelnuovo.dev"
       middlewares:
         - securityHeaders@file
         - auth@file
@@ -69,8 +68,7 @@ providers:
   docker:
     watch: true
     network: traefik-proxy
-    # Default host rule to containername.castelnuovo.xyz
-    defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.castelnuovo.xyz`)"
+    defaultRule: 'Host(`{{ index .Labels "com.docker.compose.service"}}.castelnuovo.dev`)'
     swarmModeRefreshSeconds: 15s
     exposedByDefault: false
     endpoint: "unix:///var/run/docker.sock"
@@ -81,7 +79,7 @@ log:
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: luca@castelnuovo.xyz
+      email: luca@castelnuovo.dev
       storage: acme.json
       keyType: EC384
       dnsChallenge:

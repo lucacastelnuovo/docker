@@ -3,20 +3,20 @@ access_control:
   default_policy: deny
   rules:
     - domain:
-        - castelnuovo.xyz
-        - authelia.castelnuovo.xyz
-        - s3.castelnuovo.xyz
-        - s3-console.castelnuovo.xyz
-        - teleport.castelnuovo.xyz
+        - castelnuovo.dev
+        - authelia.castelnuovo.dev
+        - s3.castelnuovo.dev
+        - s3-console.castelnuovo.dev
+        - teleport.castelnuovo.dev
       policy: bypass
 
-    - domain: email.castelnuovo.xyz
+    - domain: email.castelnuovo.dev
       policy: bypass
       resources:
         - "^/api/v1([/?].*)?$"
         - "^/.well-known([/?].*)?$"
 
-    - domain: stats.castelnuovo.xyz
+    - domain: stats.castelnuovo.dev
       policy: bypass
       resources:
         - "^/api([/?].*)?$"
@@ -26,20 +26,20 @@ access_control:
         - "^/share([/?].*)?$"
 
     - domain:
-        - proxmox.castelnuovo.xyz
-        - ldap.castelnuovo.xyz
-        - portainer.castelnuovo.xyz
-        - traefik.castelnuovo.xyz
+        - proxmox.castelnuovo.dev
+        - ldap.castelnuovo.dev
+        - portainer.castelnuovo.dev
+        - traefik.castelnuovo.dev
       policy: one_factor
       # policy: two_factor
 
-    - domain: "*.castelnuovo.xyz"
+    - domain: "*.castelnuovo.dev"
       # subject:
       # - "group:admins"
       policy: one_factor
 
 theme: dark
-default_redirection_url: https://authelia.castelnuovo.xyz
+default_redirection_url: https://authelia.castelnuovo.dev
 
 log:
   level: info
@@ -48,11 +48,11 @@ log:
 
 totp:
   disable: false
-  issuer: authelia.castelnuovo.xyz
+  issuer: authelia.castelnuovo.dev
 
 webauthn:
   disable: true
-  display_name: authelia.castelnuovo.xyz
+  display_name: authelia.castelnuovo.dev
 
 authentication_backend:
   password_reset:
@@ -80,7 +80,7 @@ authentication_backend:
 
 session:
   name: authelia_session
-  domain: castelnuovo.xyz
+  domain: castelnuovo.dev
   same_site: lax
   expiration: 1h
   inactivity: 5m
@@ -100,9 +100,9 @@ notifier:
   filesystem:
     filename: /config/notification.txt
   # smtp:
-  #   host: email.local.castelnuovo.xyz
+  #   host: email.local.castelnuovo.dev
   #   port: 25
   #   username: luca
-  #   sender: "authelia@email.castelnuovo.xyz"
-  #   subject: "[authelia.castelnuovo.xyz] {title}"
+  #   sender: "authelia@email.castelnuovo.dev"
+  #   subject: "[authelia.castelnuovo.dev] {title}"
   #   disable_require_tls: true

@@ -12,9 +12,9 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.shlink.entryPoints: https
-      traefik.http.routers.shlink.rule: Host(`castelnuovo.xyz`)
+      traefik.http.routers.shlink.rule: Host(`castelnuovo.dev`)
     environment:
-      DEFAULT_DOMAIN: castelnuovo.xyz
+      DEFAULT_DOMAIN: castelnuovo.dev
       IS_HTTPS_ENABLED: true
       GEOLITE_LICENSE_KEY: ${GEOLITE_LICENSE_KEY:?error}
       TIMEZONE: Europe/Amsterdam

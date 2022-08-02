@@ -11,7 +11,7 @@ const sendEmail = (template, to, link) => {
             break;
     }
 
-    fetch('https://email.castelnuovo.xyz/v1/account/luca/submit', {
+    fetch('https://email.castelnuovo.dev/v1/account/luca/submit', {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${emailKey}`,
@@ -24,8 +24,8 @@ const sendEmail = (template, to, link) => {
                 address: to,
             },
             from: {
-                name: 'afac.castelnuovo.xyz',
-                address: 'afac@castelnuovo.xyz',
+                name: 'afac.castelnuovo.dev',
+                address: 'afac@castelnuovo.dev',
             },
             template: templateId,
             render: {

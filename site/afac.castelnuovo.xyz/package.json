@@ -2,7 +2,7 @@
     "name": "afac_castelnuovo_xyz",
     "version": "1.0.0",
     "description": "Get a notification if your swapfiets gets impounded",
-    "author": "Luca Castelnuovo <luca@castelnuovo.xyz>",
+    "author": "Luca Castelnuovo <luca@castelnuovo.dev>",
     "license": "MIT",
     "main": "index.js",
     "scripts": {

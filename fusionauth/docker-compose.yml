@@ -23,5 +23,5 @@ services:
       DATABASE_ROOT_PASSWORD: ${DATABASE_PASSWORD_ROOT}
       FUSIONAUTH_APP_MEMORY: 512M
       FUSIONAUTH_APP_RUNTIME_MODE: production
-      FUSIONAUTH_APP_URL: https://fusionauth.castelnuovo.xyz
+      FUSIONAUTH_APP_URL: https://fusionauth.castelnuovo.dev
       SEARCH_TYPE: database
