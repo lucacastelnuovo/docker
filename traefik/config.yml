@@ -12,10 +12,10 @@ http:
       rule: "Host(`email.castelnuovo.dev`)"
       service: email
 
-    email-rp:
+    email-track:
       entryPoints:
         - https
-      rule: "Host(`rp.email.castelnuovo.dev`)"
+      rule: "Host(`track.email.castelnuovo.dev`)"
       service: email
 
     # teleport:
