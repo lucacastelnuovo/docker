@@ -3,7 +3,6 @@
 !docker-compose.yml
 !.env.example
 !README.md
-!kes
 
 !s3-kes/
 !s3-kes/config.yml
