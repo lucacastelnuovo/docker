@@ -31,11 +31,11 @@ keystore:
 policy:
   s3:
     allow:
-      - /v1/key/create/
-      - /v1/key/generate/
-      - /v1/key/decrypt/
-      - /v1/key/delete/
-      - /v1/key/list/
-      - /v1/identity/list/
+      - /v1/key/create/*
+      - /v1/key/generate/*
+      - /v1/key/decrypt/*
+      - /v1/key/delete/*
+      - /v1/key/list/*
+      - /v1/identity/list/*
     identities:
       - ${KES_IDENTITY}
