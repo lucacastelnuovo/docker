@@ -30,7 +30,7 @@ services:
       MINIO_KMS_KES_CAPATH: /kes/server.crt
       MINIO_KMS_KES_KEY_FILE: /kes/client.key
       MINIO_KMS_KES_CERT_FILE: /kes/client.crt
-      MINIO_KMS_KES_KEY_NAME: s3-default-key
+      MINIO_KMS_KES_KEY_NAME: default-key
     volumes:
       - ./s3-kes:/kes
       - ./s3-minio:/data
