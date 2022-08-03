@@ -26,9 +26,34 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?error}
       MINIO_SERVER_URL: https://s3.castelnuovo.dev
       MINIO_BROWSER_REDIRECT_URL: https://s3-console.castelnuovo.dev
+      MINIO_KMS_KES_ENDPOINT: https://s3-kes:7373
+      MINIO_KMS_KES_CAPATH: /kes/server.crt
+      MINIO_KMS_KES_KEY_FILE: /kes/client.key
+      MINIO_KMS_KES_CERT_FILE: /kes/client.crt
+      MINIO_KMS_KES_KEY_NAME: s3-default-key
     volumes:
-      - ./data:/data
+      - ./s3-kes:/kes
+      - ./s3-minio:/data
     command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+  s3-kes:
+    image: minio/kes:latest
+    container_name: s3-kes
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    environment:
+      KES_IDENTITY: ${KES_IDENTITY:?error}
+      KES_APPROLE_ID: ${KES_APPROLE_ID:?error}
+      KES_APPROLE_SECRET: ${KES_APPROLE_SECRET:?error}
+    volumes:
+      - ./s3-kes:/root/.kes
+    command: server --config=/root/.kes/config.yml --auth=off
 
 networks:
   traefik-proxy:

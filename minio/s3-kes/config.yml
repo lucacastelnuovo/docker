@@ -1,0 +1,41 @@
+address: 0.0.0.0:7373
+
+log:
+  error: on
+  audit: on
+
+admin:
+  identity: disabled
+
+tls:
+  key: /root/.kes/server.key
+  cert: /root/.kes/server.crt
+
+cache:
+  expiry:
+    any: 1m0s
+    unused: 20s
+
+keystore:
+  vault:
+    endpoint: https://vault.castelnuovo.dev
+    engine: s3-kes
+    version: v1
+    approle:
+      id: ${KES_APPROLE_ID}
+      secret: ${KES_APPROLE_SECRET}
+      retry: 15s
+    status:
+      ping: 10s
+
+policy:
+  s3:
+    allow:
+      - /v1/key/create/s3-*
+      - /v1/key/generate/s3-*
+      - /v1/key/decrypt/s3-*
+      - /v1/key/delete/s3-*
+      - /v1/key/list/s3-*
+      - /v1/identity/list/s3-*
+    identities:
+      - ${KES_IDENTITY}
