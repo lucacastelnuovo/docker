@@ -28,6 +28,9 @@ keystore:
     status:
       ping: 10s
 
+keys:
+  - name: zidreinaert-nl
+
 policy:
   s3:
     allow:
