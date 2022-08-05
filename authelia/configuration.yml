@@ -100,9 +100,8 @@ notifier:
   filesystem:
     filename: /config/notification.txt
   # smtp:
-  #   host: email.local.castelnuovo.xyz
+  #   host: mx.email.castelnuovo.dev
   #   port: 25
-  #   username: luca
+  #   username: castelnuovo/production
   #   sender: "authelia@email.castelnuovo.dev"
   #   subject: "[authelia.castelnuovo.dev] {title}"
-  #   disable_require_tls: true
