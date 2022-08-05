@@ -34,8 +34,8 @@ access_control:
       # policy: two_factor
 
     - domain:
-      - 2fa.castelnuovo.dev
-    policy: two_factor
+        - 2fa.castelnuovo.dev
+      policy: two_factor
 
     - domain: "*.castelnuovo.dev"
       policy: one_factor
