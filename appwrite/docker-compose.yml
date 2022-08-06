@@ -21,8 +21,6 @@ services:
       traefik.http.services.appwrite_api.loadbalancer.server.port: 80
     volumes:
       - ./data:/storage:rw
-    ports:
-      - 81:80
 
   appwrite-realtime:
     image: appwrite/appwrite:0.15.3
