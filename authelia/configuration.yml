@@ -8,6 +8,7 @@ access_control:
         - teleport.castelnuovo.dev
         - s3.castelnuovo.dev
         - s3-console.castelnuovo.dev
+        - backend.castelnuovo.dev
       policy: bypass
 
     - domain: email.castelnuovo.dev
