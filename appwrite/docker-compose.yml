@@ -21,6 +21,8 @@ services:
       traefik.http.services.appwrite_api.loadbalancer.server.port: 80
     volumes:
       - ./data:/storage:rw
+    ports:
+      - 81:80
 
   appwrite-realtime:
     image: appwrite/appwrite:0.15.3
@@ -120,7 +122,7 @@ services:
     <<: *appwrite-common
     entrypoint: schedule
 
-  mariadb:
+  appwrite-mariadb:
     image: mariadb:10.7
     container_name: appwrite-mariadb
     <<: *appwrite-common
@@ -133,7 +135,7 @@ services:
       - MYSQL_PASSWORD=${_APP_DB_PASS}
     command: "mysqld --innodb-flush-method=fsync"
 
-  redis:
+  appwrite-redis:
     image: redis:6.2-alpine
     container_name: appwrite-redis
     <<: *appwrite-common
@@ -145,14 +147,14 @@ services:
       --maxmemory-policy     allkeys-lru
       --maxmemory-samples    5
 
-  influxdb:
+  appwrite-influxdb:
     image: appwrite/influxdb:1.5.0
     container_name: appwrite-influxdb
     <<: *appwrite-common
     volumes:
       - ./data/influxdb:/var/lib/influxdb:rw
 
-  telegraf:
+  appwrite-telegraf:
     image: appwrite/telegraf:1.4.0
     container_name: appwrite-telegraf
     <<: *appwrite-common
