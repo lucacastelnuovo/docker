@@ -31,11 +31,6 @@ access_control:
         - ldap.castelnuovo.dev
         - portainer.castelnuovo.dev
         - traefik.castelnuovo.dev
-      policy: one_factor
-      # policy: two_factor
-
-    - domain:
-        - 2fa.castelnuovo.dev
       policy: two_factor
 
     - domain: "*.castelnuovo.dev"
@@ -100,11 +95,11 @@ storage:
 
 notifier:
   disable_startup_check: true
-  filesystem:
-    filename: /config/notification.txt
-  # smtp:
-  #   host: mx.email.castelnuovo.dev
-  #   port: 25
-  #   username: castelnuovo/production
-  #   sender: "authelia@email.castelnuovo.dev"
-  #   subject: "[authelia.castelnuovo.dev] {title}"
+  # filesystem:
+  # filename: /config/notification.txt
+  smtp:
+    host: mx.email.castelnuovo.dev
+    port: 25
+    username: castelnuovo/production
+    sender: "authelia@email.castelnuovo.dev"
+    subject: "[authelia.castelnuovo.dev] {title}"
