@@ -1,0 +1,165 @@
+version: "3"
+
+x-appwrite-common: &appwrite-common
+  restart: unless-stopped
+  security_opt:
+    - no-new-privileges:true
+  networks:
+    - traefik-proxy
+  env_file:
+    - .env
+
+services:
+  appwrite:
+    <<: *appwrite-common
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite
+    labels:
+      traefik.enable: true
+      traefik.http.routers.appwrite_api.entrypoints: https
+      traefik.http.routers.appwrite_api.rule: Host(`backend.castelnuovo.dev`) && PathPrefix(`/`)
+      traefik.http.services.appwrite_api.loadbalancer.server.port: 80
+    volumes:
+      - ./data:/storage:rw
+    ports:
+      - 81:80
+
+  appwrite-realtime:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-realtime
+    <<: *appwrite-common
+    labels:
+      traefik.enable: true
+      traefik.http.routers.appwrite_realtime.entrypoints: https
+      traefik.http.routers.appwrite_realtime.rule: Host(`backend.castelnuovo.dev`) && PathPrefix(`/v1/realtime`)
+      traefik.http.services.appwrite_realtime.loadbalancer.server.port: 80
+    entrypoint: realtime
+
+  appwrite-worker-audits:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-audits
+    <<: *appwrite-common
+    entrypoint: worker-audits
+
+  appwrite-worker-webhooks:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-webhooks
+    <<: *appwrite-common
+    entrypoint: worker-webhooks
+
+  appwrite-worker-deletes:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-deletes
+    <<: *appwrite-common
+    volumes:
+      - ./data:/storage:rw
+    entrypoint: worker-deletes
+
+  appwrite-worker-databases:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-databases
+    <<: *appwrite-common
+    entrypoint: worker-databases
+
+  appwrite-worker-builds:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-builds
+    <<: *appwrite-common
+    entrypoint: worker-builds
+
+  appwrite-worker-certificates:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-certificates
+    <<: *appwrite-common
+    volumes:
+      - ./data:/storage:rw
+    entrypoint: worker-certificates
+
+  appwrite-worker-functions:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-functions
+    <<: *appwrite-common
+    entrypoint: worker-functions
+
+  appwrite-executor:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-executor
+    <<: *appwrite-common
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/storage:rw
+      - /tmp:/tmp:rw
+    entrypoint: executor
+    stop_signal: SIGINT
+
+  appwrite-worker-mails:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-mails
+    <<: *appwrite-common
+    entrypoint: worker-mails
+
+  appwrite-worker-messaging:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-worker-messaging
+    <<: *appwrite-common
+    entrypoint: worker-messaging
+
+  appwrite-maintenance:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-maintenance
+    <<: *appwrite-common
+    entrypoint: maintenance
+
+  appwrite-usage:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-usage
+    <<: *appwrite-common
+    entrypoint: usage
+
+  appwrite-schedule:
+    image: appwrite/appwrite:0.15.3
+    container_name: appwrite-schedule
+    <<: *appwrite-common
+    entrypoint: schedule
+
+  mariadb:
+    image: mariadb:10.7
+    container_name: appwrite-mariadb
+    <<: *appwrite-common
+    volumes:
+      - ./data/mariadb:/var/lib/mysql:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=${_APP_DB_ROOT_PASS}
+      - MYSQL_DATABASE=${_APP_DB_SCHEMA}
+      - MYSQL_USER=${_APP_DB_USER}
+      - MYSQL_PASSWORD=${_APP_DB_PASS}
+    command: "mysqld --innodb-flush-method=fsync"
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: appwrite-redis
+    <<: *appwrite-common
+    volumes:
+      - ./data/redis:/data:rw
+    command: >
+      redis-server
+      --maxmemory            512mb
+      --maxmemory-policy     allkeys-lru
+      --maxmemory-samples    5
+
+  influxdb:
+    image: appwrite/influxdb:1.5.0
+    container_name: appwrite-influxdb
+    <<: *appwrite-common
+    volumes:
+      - ./data/influxdb:/var/lib/influxdb:rw
+
+  telegraf:
+    image: appwrite/telegraf:1.4.0
+    container_name: appwrite-telegraf
+    <<: *appwrite-common
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
