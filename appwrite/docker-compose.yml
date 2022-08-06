@@ -163,6 +163,7 @@ services:
 networks:
   appwrite_runtimes:
     driver: bridge
+    external: true
   traefik-proxy:
     driver: bridge
     external: true
