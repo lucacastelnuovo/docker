@@ -103,7 +103,7 @@ key_file = "/data/private_key"
     ## The SMTP port.
     port=25
     ## Whether to connect with TLS.
-    tls_required=false
+    tls_required=true
     ## The SMTP user, usually your email address.
     user="castelnuovo/production"
     ## The SMTP password.
