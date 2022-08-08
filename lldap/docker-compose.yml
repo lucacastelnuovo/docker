@@ -2,7 +2,7 @@ version: "3"
 
 services:
   ldap:
-    image: nitnelave/lldap:stable
+    image: nitnelave/lldap:latest-alpine
     container_name: ldap
     restart: unless-stopped
     security_opt:
