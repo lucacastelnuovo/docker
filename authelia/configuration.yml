@@ -27,9 +27,9 @@ access_control:
         - "^/share([/?].*)?$"
 
     - domain:
-        - proxmox.castelnuovo.dev
-        - ldap.castelnuovo.dev
-        - portainer.castelnuovo.dev
+        # - proxmox.castelnuovo.dev
+        # - ldap.castelnuovo.dev
+        # - portainer.castelnuovo.dev
         - traefik.castelnuovo.dev
       policy: two_factor
 
@@ -62,9 +62,6 @@ authentication_backend:
     url: ldap://ldap:389
     timeout: 5s
     start_tls: false
-    #tls:
-    #  skip_verify: false
-    #  minimum_version: TLS1.2
     base_dn: dc=castelnuovo,dc=xyz
     username_attribute: uid
     additional_users_dn: ou=people
@@ -92,11 +89,15 @@ regulation:
 storage:
   local:
     path: /config/db.sqlite3
+  mysql:
+    host: mariadb
+    port: 3306
+    database: db_authelia
+    username: db_authelia
+    timeout: 5s
 
 notifier:
   disable_startup_check: true
-  # filesystem:
-  # filename: /config/notification.txt
   smtp:
     host: mx.email.castelnuovo.dev
     port: 25
