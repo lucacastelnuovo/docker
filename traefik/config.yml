@@ -12,6 +12,12 @@ http:
       rule: "Host(`email.castelnuovo.dev`)"
       service: email
 
+    nas:
+      entryPoints:
+        - https
+      rule: "Host(`nas.castelnuovo.dev`)"
+      service: nas
+
   services:
     proxmox:
       loadBalancer:
@@ -22,6 +28,11 @@ http:
       loadBalancer:
         servers:
           - url: http://email.local.castelnuovo.xyz:5000
+
+    nas:
+      loadBalancer:
+        servers:
+          - url: https://nas.local.castelnuovo.xyz:5001
 
   middlewares:
     # Authelia guard
