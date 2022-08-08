@@ -27,9 +27,9 @@ access_control:
         - "^/share([/?].*)?$"
 
     - domain:
-        # - proxmox.castelnuovo.dev
-        # - ldap.castelnuovo.dev
-        # - portainer.castelnuovo.dev
+        - proxmox.castelnuovo.dev
+        - ldap.castelnuovo.dev
+        - portainer.castelnuovo.dev
         - traefik.castelnuovo.dev
       policy: two_factor
 
