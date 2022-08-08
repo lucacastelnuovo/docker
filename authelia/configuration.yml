@@ -87,8 +87,6 @@ regulation:
   ban_time: 12h
 
 storage:
-  local:
-    path: /config/db.sqlite3
   mysql:
     host: mariadb
     port: 3306
