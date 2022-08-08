@@ -74,7 +74,6 @@ ldap_base_dn = "dc=castelnuovo,dc=xyz"
 ##
 ## This can be overridden with the DATABASE_URL env variable.
 database_url = "sqlite:///data/users.db?mode=rwc"
-# database_url = "mysql://db_ldap:password@mariadb/db_ldap"
 
 ## Private key file.
 ## Contains the secret private key used to store the passwords safely.
