@@ -121,19 +121,6 @@ services:
     <<: *appwrite-common
     entrypoint: schedule
 
-  appwrite-mariadb:
-    image: mariadb:10.7
-    container_name: appwrite-mariadb
-    <<: *appwrite-common
-    volumes:
-      - ./data/mariadb:/var/lib/mysql:rw
-    environment:
-      - MYSQL_ROOT_PASSWORD=${_APP_DB_ROOT_PASS}
-      - MYSQL_DATABASE=${_APP_DB_SCHEMA}
-      - MYSQL_USER=${_APP_DB_USER}
-      - MYSQL_PASSWORD=${_APP_DB_PASS}
-    command: "mysqld --innodb-flush-method=fsync"
-
   appwrite-redis:
     image: redis:6.2-alpine
     container_name: appwrite-redis
