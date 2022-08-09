@@ -34,11 +34,11 @@ services:
       MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD: ${MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD:?error}
       MINIO_IDENTITY_LDAP_SERVER_INSECURE: on
 
-      # MINIO_KMS_KES_ENDPOINT: https://s3-kes:7373
-      # MINIO_KMS_KES_CAPATH: /kes/server.crt
-      # MINIO_KMS_KES_KEY_FILE: /kes/client.key
-      # MINIO_KMS_KES_CERT_FILE: /kes/client.crt
-      # MINIO_KMS_KES_KEY_NAME: default-key
+      MINIO_KMS_KES_ENDPOINT: https://s3-kes:7373
+      MINIO_KMS_KES_CAPATH: /kes/server.crt
+      MINIO_KMS_KES_KEY_FILE: /kes/client.key
+      MINIO_KMS_KES_CERT_FILE: /kes/client.crt
+      MINIO_KMS_KES_KEY_NAME: default-key
     volumes:
       - ./s3-kes:/kes
       - ./s3-minio:/data
