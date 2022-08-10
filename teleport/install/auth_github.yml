@@ -1,0 +1,16 @@
+kind: github
+metadata:
+  name: cubequence
+spec:
+  client_id: 133c6c96cb0e3aff28b5
+  client_secret: REDACTED
+  display: Github / CubeQuence
+  redirect_url: https://teleport.castelnuovo.dev/v1/webapi/github/callback
+  teams_to_logins: null
+  teams_to_roles:
+    - organization: CubeQuence
+      roles:
+        - editor
+        - github-cubequence-teleport
+      team: teleport
+version: v3
