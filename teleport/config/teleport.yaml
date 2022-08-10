@@ -18,6 +18,8 @@ auth_service:
   public_addr: teleport.castlenuovo.dev:3025
   proxy_listener_mode: separate
   # proxy_listener_mode: multiplex
+  authentication:
+    type: github
 
 ssh_service:
   enabled: "yes"
