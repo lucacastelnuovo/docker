@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  vault:
+    image: vault:latest
+    container_name: vault
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.vault.entrypoints: https
+      traefik.http.services.vault.loadbalancer.server.port: 8200
+    volumes:
+      - ./data:/vault/file
+      - ./config:/vault/config
+    environment:
+      VAULT_ADDR: http://127.0.0.1:8200
+      VAULT_API_ADDR: http://127.0.0.1:8200
+    entrypoint: vault server -config=/vault/config/vault.json
+    cap_add:
+      - IPC_LOCK
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
