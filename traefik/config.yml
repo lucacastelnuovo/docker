@@ -18,6 +18,12 @@ http:
       rule: "Host(`nas.castelnuovo.dev`)"
       service: nas
 
+    vosstraat:
+      entryPoints:
+        - https
+      rule: "Host(`vosstraat.castelnuovo.dev`)"
+      service: vosstraat
+
   services:
     proxmox:
       loadBalancer:
@@ -33,6 +39,11 @@ http:
       loadBalancer:
         servers:
           - url: https://nas.local.castelnuovo.xyz:5001
+
+    vosstraat:
+      loadBalancer:
+        servers:
+          - url: https://vosstraat.castelnuovo.xyz
 
   middlewares:
     # Authelia guard
