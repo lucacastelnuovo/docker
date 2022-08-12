@@ -43,7 +43,7 @@ http:
     vosstraat:
       loadBalancer:
         servers:
-          - url: https://vosstraat.castelnuovo.xyz
+          - url: https://vosstraat.external.castelnuovo.xyz
 
   middlewares:
     # Authelia guard
