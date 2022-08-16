@@ -13,6 +13,7 @@ services:
       traefik.enable: true
       traefik.http.routers.vault.entrypoints: https
       traefik.http.services.vault.loadbalancer.server.port: 8200
+      com.centurylinklabs.watchtower.monitor-only: true
     volumes:
       - ./data:/vault/file
       - ./config:/vault/config
