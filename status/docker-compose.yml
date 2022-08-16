@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  status:
+    image: louislam/uptime-kuma:1
+    container_name: status
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.status.entrypoints: https
+      traefik.http.services.status.loadbalancer.server.port: 3001
+    volumes:
+      - ./data:/app/data
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
