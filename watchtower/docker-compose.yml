@@ -12,6 +12,7 @@ services:
     environment:
       WATCHTOWER_CLEANUP: true
       WATCHTOWER_MONITOR_ONLY: true
+      WATCHTOWER_POLL_INTERVAL: 120
       WATCHTOWER_NOTIFICATIONS: email
       WATCHTOWER_NOTIFICATION_EMAIL_TO: luca@castelnuovo.dev
       WATCHTOWER_NOTIFICATION_EMAIL_FROM: watchtower@email.castelnuovo.dev
