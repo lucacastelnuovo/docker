@@ -53,7 +53,6 @@ http:
         sslProxyHeaders:
         hostsProxyHeaders:
           - X-Forwarded-Host
-        X-Forwarded-Proto: https
         referrerPolicy: same-origin
         contentTypeNosniff: true
         browserXssFilter: true
