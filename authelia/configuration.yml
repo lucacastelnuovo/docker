@@ -38,7 +38,7 @@ access_control:
     - domain: "vosstraat.castelnuovo.dev"
       # subject:
       #   - "group:vosstraat"
-      # policy: one_factor
+      policy: one_factor
 
     - domain: "*.castelnuovo.dev"
       # subject:
@@ -100,7 +100,7 @@ storage:
     host: mariadb
     port: 3306
     database: db_authelia
-    username: db_authelia
+    username: user_authelia
     timeout: 5s
 
 notifier:
