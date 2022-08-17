@@ -1,4 +1,3 @@
-# TODO: https://www.authelia.com/configuration/security/access-control/
 access_control:
   default_policy: deny
   rules:
@@ -32,9 +31,18 @@ access_control:
         - ldap.castelnuovo.dev
         - portainer.castelnuovo.dev
         - traefik.castelnuovo.dev
+      # subject:
+      # - "group:admin"
       policy: two_factor
 
+    - domain: "vosstraat.castelnuovo.dev"
+      subject:
+        - "group:vosstraat"
+      policy: one_factor
+
     - domain: "*.castelnuovo.dev"
+      # subject:
+      # - "group:admin"
       policy: one_factor
 
 theme: dark
