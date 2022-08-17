@@ -35,21 +35,9 @@ http:
           - url: https://nas.local.castelnuovo.xyz:5001
 
   middlewares:
-    # Authelia guard
     auth:
       forwardauth:
         address: http://authelia:9091/api/verify?rd=https://authelia.castelnuovo.dev/
-        trustForwardHeader: true
-        authResponseHeaders:
-          - Remote-User
-          - Remote-Groups
-          - Remote-Name
-          - Remote-Email
-
-    # Authelia basic auth guard
-    auth-basic:
-      forwardauth:
-        address: http://authelia:9091/api/verify?auth=basic
         trustForwardHeader: true
         authResponseHeaders:
           - Remote-User
