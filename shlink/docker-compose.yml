@@ -21,7 +21,7 @@ services:
       DB_DRIVER: mysql
       DB_HOST: mariadb
       DB_NAME: db_shlink
-      DB_USER: db_shlink
+      DB_USER: user_shlink
       DB_PASSWORD: ${DATABASE_PASSWORD:?error}
       DEFAULT_BASE_URL_REDIRECT: https://lucacastelnuovo.nl
 
