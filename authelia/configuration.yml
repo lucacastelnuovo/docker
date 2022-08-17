@@ -36,9 +36,9 @@ access_control:
       policy: two_factor
 
     - domain: "vosstraat.castelnuovo.dev"
-      subject:
-        - "group:vosstraat"
-      policy: one_factor
+      # subject:
+      #   - "group:vosstraat"
+      # policy: one_factor
 
     - domain: "*.castelnuovo.dev"
       # subject:
