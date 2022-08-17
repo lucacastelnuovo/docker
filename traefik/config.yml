@@ -18,12 +18,6 @@ http:
       rule: "Host(`nas.castelnuovo.dev`)"
       service: nas
 
-    vosstraat:
-      entryPoints:
-        - https
-      rule: "Host(`vosstraat.castelnuovo.dev`)"
-      service: vosstraat
-
   services:
     proxmox:
       loadBalancer:
@@ -40,27 +34,10 @@ http:
         servers:
           - url: https://nas.local.castelnuovo.xyz:5001
 
-    vosstraat:
-      loadBalancer:
-        servers:
-          - url: https://vosstraat.external.castelnuovo.xyz
-
   middlewares:
-    # Authelia guard
     auth:
       forwardauth:
         address: http://authelia:9091/api/verify?rd=https://authelia.castelnuovo.dev/
-        trustForwardHeader: true
-        authResponseHeaders:
-          - Remote-User
-          - Remote-Groups
-          - Remote-Name
-          - Remote-Email
-
-    # Authelia basic auth guard
-    auth-basic:
-      forwardauth:
-        address: http://authelia:9091/api/verify?auth=basic
         trustForwardHeader: true
         authResponseHeaders:
           - Remote-User
@@ -74,13 +51,9 @@ http:
           server: ""
           X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
         sslProxyHeaders:
-          X-Forwarded-Proto: https
         hostsProxyHeaders:
           - X-Forwarded-Host
-        customRequestHeaders:
-          X-Forwarded-Proto: https
-        customResponseHeaders:
-          X-Forwarded-Proto: https
+        X-Forwarded-Proto: https
         referrerPolicy: same-origin
         contentTypeNosniff: true
         browserXssFilter: true
