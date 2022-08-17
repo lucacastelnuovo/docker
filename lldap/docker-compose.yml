@@ -19,7 +19,7 @@ services:
       LLDAP_JWT_SECRET: ${LLDAP_JWT_SECRET:?error}
       LLDAP_LDAP_USER_PASS: ${LLDAP_LDAP_USER_PASS:?error}
       LLDAP_SMTP_OPTIONS__PASSWORD: ${LLDAP_SMTP_OPTIONS__PASSWORD:?error}
-      # DATABASE_URL: ${DATABASE_URL:?error}
+      # TODO: DATABASE_URL: ${DATABASE_URL:?error}
 
 networks:
   traefik-proxy:
