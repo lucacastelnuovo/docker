@@ -35,15 +35,15 @@ access_control:
       # subject:
       # - "group:lldap_admin"
 
-    - domain: "vosstraat.castelnuovo.dev"
+    - domain: vosstraat.castelnuovo.dev
       policy: one_factor
       subject:
-        - "group:vosstraat"
+        - group:vosstraat
 
     - domain: "*.castelnuovo.dev"
       policy: one_factor
-      # subject:
-      # - "group:lldap_admin"
+      subject:
+        - group:lldap_admin
 
 theme: dark
 default_redirection_url: https://authelia.castelnuovo.dev
