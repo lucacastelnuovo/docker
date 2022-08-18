@@ -73,6 +73,7 @@ ldap_base_dn = "dc=castelnuovo,dc=xyz"
 ##  - "mysql://mysql-user:password@mysql-server/my-database"
 ##
 ## This can be overridden with the DATABASE_URL env variable.
+# TODO: migrate to mysql
 database_url = "sqlite:///data/users.db?mode=rwc"
 
 ## Private key file.
