@@ -9,6 +9,7 @@ access_control:
         - s3-console.castelnuovo.dev
         - backend.castelnuovo.dev
         - vault.castelnuovo.dev
+        - ldap.castelnuovo.dev
       policy: bypass
 
     - domain: email.castelnuovo.dev
@@ -28,7 +29,7 @@ access_control:
 
     - domain:
         - proxmox.castelnuovo.dev
-        - ldap.castelnuovo.dev
+        # - ldap.castelnuovo.dev
         - portainer.castelnuovo.dev
         - traefik.castelnuovo.dev
       # subject:
