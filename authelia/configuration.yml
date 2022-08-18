@@ -9,7 +9,6 @@ access_control:
         - s3-console.castelnuovo.dev
         - backend.castelnuovo.dev
         - vault.castelnuovo.dev
-        - ldap.castelnuovo.dev
       policy: bypass
 
     - domain: email.castelnuovo.dev
@@ -29,11 +28,11 @@ access_control:
 
     - domain:
         - proxmox.castelnuovo.dev
-        # - ldap.castelnuovo.dev
+        - ldap.castelnuovo.dev
         - portainer.castelnuovo.dev
         - traefik.castelnuovo.dev
       # subject:
-      # - "group:admin"
+      # - "group:lldap_admin"
       policy: two_factor
 
     - domain: "vosstraat.castelnuovo.dev"
@@ -43,7 +42,7 @@ access_control:
 
     - domain: "*.castelnuovo.dev"
       # subject:
-      # - "group:admin"
+      # - "group:lldap_admin"
       policy: one_factor
 
 theme: dark
