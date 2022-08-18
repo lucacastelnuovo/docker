@@ -32,8 +32,8 @@ access_control:
         - portainer.castelnuovo.dev
         - traefik.castelnuovo.dev
       policy: two_factor
-      # subject:
-      # - "group:lldap_admin"
+      subject:
+        - "group:lldap_admin"
 
     - domain: vosstraat.castelnuovo.dev
       policy: one_factor
