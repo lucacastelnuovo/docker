@@ -18,6 +18,11 @@ access_control:
         - "^/api/v1([/?].*)?$"
         - "^/.well-known([/?].*)?$"
 
+    - domain: email.castelnuovo.dev
+      policy: one_factor
+      subject:
+        - group:email.castelnuovo.dev
+
     - domain: stats.castelnuovo.dev
       policy: bypass
       resources:
@@ -26,6 +31,11 @@ access_control:
         - "^/css([/?].*)?$"
         - "^/images([/?].*)?$"
         - "^/share([/?].*)?$"
+
+    - domain: stats.castelnuovo.dev
+      policy: one_factor
+      subject:
+        - group:stats.castelnuovo.dev
 
     - domain:
         - proxmox.castelnuovo.dev
