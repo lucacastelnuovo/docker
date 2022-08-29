@@ -8,7 +8,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - traefik-proxy
+      - database-net
     volumes:
       - ./mariadb:/var/lib/mysql
     environment:
@@ -25,7 +25,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - traefik-proxy
+      - database-net
     volumes:
       - ./postgres:/var/lib/postgresql/data
     environment:
@@ -35,6 +35,6 @@ services:
       - 5432:5432
 
 networks:
-  traefik-proxy:
+  database-net:
     driver: bridge
     external: true

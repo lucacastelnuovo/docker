@@ -5,13 +5,13 @@ services:
     image: bytemark/smtp:latest
     restart: always
     networks:
-      - stats_internal
+      - stats-net
 
   stats_events:
     image: yandex/clickhouse-server:21.3.2.5
     restart: always
     networks:
-      - stats_internal
+      - stats-net
     volumes:
       - ./data:/var/lib/clickhouse
       - ./clickhouse-config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
@@ -28,7 +28,8 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - stats_internal
+      - stats-net
+      - database-net
       - traefik-proxy
     labels:
       traefik.enable: true
@@ -51,8 +52,12 @@ services:
     command: sh -c "/entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
 
 networks:
+  stats-net:
+    driver: bridge
+    external: false
+  database-net:
+    driver: bridge
+    external: true
   traefik-proxy:
     driver: bridge
     external: true
-  stats_internal:
-    external: false

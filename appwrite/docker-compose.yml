@@ -5,8 +5,9 @@ x-appwrite-common: &appwrite-common
   security_opt:
     - no-new-privileges:true
   networks:
+    - appwrite-net
+    - database-net
     - traefik-proxy
-    - appwrite_runtimes
   env_file:
     - .env
 
@@ -146,7 +147,10 @@ services:
     <<: *appwrite-common
 
 networks:
-  appwrite_runtimes:
+  appwrite-net:
+    driver: bridge
+    external: true
+  database-net:
     driver: bridge
     external: true
   traefik-proxy:

@@ -8,6 +8,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
+      - database-net
       - traefik-proxy
     labels:
       traefik.enable: true
@@ -23,6 +24,9 @@ services:
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD: ${AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD:?error}
 
 networks:
+  database-net:
+    driver: bridge
+    external: true
   traefik-proxy:
     driver: bridge
     external: true
