@@ -18,18 +18,6 @@ http:
       rule: "Host(`nas.castelnuovo.dev`)"
       service: nas
 
-    phish:
-      entryPoints:
-        - https
-      rule: "Host(`phish.castelnuovo.dev`)"
-      service: phish
-
-    phish-admin:
-      entryPoints:
-        - https
-      rule: "Host(`phish-admin.castelnuovo.dev`)"
-      service: phish-admin
-
   services:
     proxmox:
       loadBalancer:
@@ -45,16 +33,6 @@ http:
       loadBalancer:
         servers:
           - url: https://nas.local.castelnuovo.xyz:5001
-
-    phish:
-      loadBalancer:
-        servers:
-          - url: http://phish.local.castelnuovo.xyz:8080
-
-    phish-admin:
-      loadBalancer:
-        servers:
-          - url: http://phish.local.castelnuovo.xyz:8081
 
   middlewares:
     auth:
