@@ -8,6 +8,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
+      - database-net
       - traefik-proxy
     labels:
       traefik.enable: true
@@ -17,6 +18,9 @@ services:
       - ./data:/app/data
 
 networks:
+  database-net:
+    driver: bridge
+    external: true
   traefik-proxy:
     driver: bridge
     external: true
