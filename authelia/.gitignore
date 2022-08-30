@@ -3,4 +3,3 @@
 !docker-compose.yml
 !.env.example
 !configuration.yml
-!users_database.yml
