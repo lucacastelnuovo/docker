@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  invoices:
+    image: lucacastelnuovo/invoices:latest
+    container_name: invoices
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.invoices.entrypoints: https
+      traefik.http.services.invoices.loadbalancer.server.port: 80
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: https://invoices.castelnuovo.dev
+
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_DATABASE: db_invoices
+      DB_USERNAME: user_invoices
+      DB_PASSWORD: ${DB_PASSWORD:?error}
+
+      MAIL_HOST: mx.email.castelnuovo.dev
+      MAIL_PORT: 25
+      MAIL_USERNAME: castelnuovo/production
+      MAIL_PASSWORD: ${MAIL_PASSWORD:?error}
+      MAIL_ENCRYPTION: tls
+
+      SANCTUM_STATEFUL_DOMAINS: invoices.castelnuovo.dev
+      SESSION_DOMAIN: invoices.castelnuovo.dev
+
+networks:
+  traefik-proxy:
+    driver: bridge
+    external: true
