@@ -24,7 +24,7 @@ jobs:
           $SourceDiff = $diff | Where-Object { $_ -match '^authelia/' }
           $HasDiff = $SourceDiff.Length -gt 0
 
-        Write-Host "::set-output name=files_changed::$HasDiff"
+          Write-Host "::set-output name=files_changed::$HasDiff"
 
       - name: Send webhook
         uses: distributhor/workflow-webhook@v2
