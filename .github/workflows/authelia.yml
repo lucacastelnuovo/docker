@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  conditional_step:
+  authelia:
     runs-on: ubuntu-latest
 
     steps:
