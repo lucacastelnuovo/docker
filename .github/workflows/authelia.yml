@@ -26,7 +26,14 @@ jobs:
 
           Write-Host "::set-output name=files_changed::$HasDiff"
 
-      - name: Send webhook
+      # - name: Pull changes on server
+      #   uses: distributhor/workflow-webhook@v2
+      #   if: steps.check_file_changed.outputs.files_changed == 'True'
+      #   env:
+      #     webhook_url: ${{ secrets.AUTHELIA_WEBHOOK }}
+      #     webhook_secret: unused
+
+      - name: Send webhook to portainer
         uses: distributhor/workflow-webhook@v2
         if: steps.check_file_changed.outputs.files_changed == 'True'
         env:
