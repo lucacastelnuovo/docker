@@ -12,6 +12,11 @@ access_control:
         - invoices.castelnuovo.dev
       policy: bypass
 
+    - domain: vosstraat.castelnuovo.dev
+      policy: one_factor
+      subject:
+        - group:vosstraat
+
     - domain: email.castelnuovo.dev
       policy: bypass
       resources:
@@ -50,11 +55,6 @@ access_control:
       policy: two_factor
       subject:
         - "group:lldap_admin"
-
-    - domain: vosstraat.castelnuovo.dev
-      policy: one_factor
-      subject:
-        - group:vosstraat
 
     - domain: "*.castelnuovo.dev"
       policy: one_factor
