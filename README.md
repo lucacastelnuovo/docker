@@ -1,4 +1,4 @@
-# Docker.ltc config
+# Docker.ltc files
 
 ```
 $ git clone https://github.com/Luca-Castelnuovo/docker.ltc ./
