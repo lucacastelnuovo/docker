@@ -1,0 +1,34 @@
+name: authelia
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  conditional_step:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Check file changes
+        shell: pwsh
+        id: check_file_changed
+        run: |
+          $diff = git diff --name-only HEAD^ HEAD
+
+          $SourceDiff = $diff | Where-Object { $_ -match '^authelia/' }
+          $HasDiff = $SourceDiff.Length -gt 0
+
+        Write-Host "::set-output name=files_changed::$HasDiff"
+
+      - name: Send webhook
+        uses: distributhor/workflow-webhook@v2
+        if: steps.check_file_changed.outputs.files_changed == 'True'
+        env:
+          webhook_url: ${{ secrets.AUTHELIA_WEBHOOK }}
+          webhook_secret: unused
