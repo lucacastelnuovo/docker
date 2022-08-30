@@ -8,6 +8,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
+      - database-net
       - traefik-proxy
     labels:
       traefik.enable: true
@@ -34,6 +35,9 @@ services:
       SESSION_DOMAIN: invoices.castelnuovo.dev
 
 networks:
+  database-net:
+    driver: bridge
+    external: true
   traefik-proxy:
     driver: bridge
     external: true
