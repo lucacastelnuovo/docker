@@ -1,0 +1,14 @@
+*
+!.gitignore
+!docker-compose.yml
+!.env.example
+!storage
+!storage/app
+!storage/app/public
+!storage/fonts
+!storage/fonts/.gitkeep
+!storage/framework
+!storage/framework/cache
+!storage/framework/sessions
+!storage/framework/views
+!storage/logs
