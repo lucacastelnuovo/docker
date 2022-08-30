@@ -33,6 +33,8 @@ services:
 
       SANCTUM_STATEFUL_DOMAINS: invoices.castelnuovo.dev
       SESSION_DOMAIN: invoices.castelnuovo.dev
+    volumes:
+      - ./storage:/var/www/html/storage
 
 networks:
   database-net:
