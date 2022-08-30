@@ -15,8 +15,8 @@ services:
       traefik.http.routers.reinaert.entrypoints: https
       traefik.http.services.reinaert.loadbalancer.server.port: 80
     environment:
-      APP_ENV: local
-      APP_DEBUG: "true"
+      APP_ENV: production
+      APP_DEBUG: "false"
       APP_URL: https://reinaert.castelnuovo.dev
 
       DB_HOST: mariadb
@@ -30,6 +30,8 @@ services:
       MAIL_USERNAME: castelnuovo/production
       MAIL_PASSWORD: ${MAIL_PASSWORD:?error}
       MAIL_ENCRYPTION: tls
+      MAIL_FROM_ADDRESS: reinaert@email.castelnuovo.dev
+      MAIL_FROM_NAME: Zeer Illuster Dispuut R.E.I.N.A.E.R.T.
 
       SANCTUM_STATEFUL_DOMAINS: reinaert.castelnuovo.dev
       SESSION_DOMAIN: reinaert.castelnuovo.dev

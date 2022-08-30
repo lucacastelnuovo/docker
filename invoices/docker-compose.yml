@@ -15,8 +15,8 @@ services:
       traefik.http.routers.invoices.entrypoints: https
       traefik.http.services.invoices.loadbalancer.server.port: 80
     environment:
-      APP_ENV: local
-      APP_DEBUG: "true"
+      APP_ENV: production
+      APP_DEBUG: "false"
       APP_URL: https://invoices.castelnuovo.dev
 
       DB_HOST: mariadb
@@ -30,6 +30,8 @@ services:
       MAIL_USERNAME: castelnuovo/production
       MAIL_PASSWORD: ${MAIL_PASSWORD:?error}
       MAIL_ENCRYPTION: tls
+      MAIL_FROM_ADDRESS: invoices@email.castelnuovo.dev
+      MAIL_FROM_NAME: Castelnuovo Development
 
       SANCTUM_STATEFUL_DOMAINS: invoices.castelnuovo.dev
       SESSION_DOMAIN: invoices.castelnuovo.dev
