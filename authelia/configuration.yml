@@ -37,6 +37,11 @@ access_control:
       subject:
         - group:stats.castelnuovo.dev
 
+    - domain: portainer.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/api/webhooks([/?].*)?$"
+
     - domain:
         - proxmox.castelnuovo.dev
         - ldap.castelnuovo.dev
