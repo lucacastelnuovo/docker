@@ -1,5 +1,6 @@
 *
 !.gitignore
 !docker-compose.yml
+!.env.example
 !creds
 !creds/.gitkeep

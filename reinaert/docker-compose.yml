@@ -2,7 +2,7 @@ version: "3"
 
 services:
   reinaert:
-    image: lucacastelnuovo/reinaert:latest
+    image: zidreinaert/api:latest
     container_name: reinaert
     restart: unless-stopped
     security_opt:
@@ -17,6 +17,7 @@ services:
       - ./creds:/var/www/html/creds
     environment:
       app_url: https://reinaert.castelnuovo.dev
+      cron_key: ${CRON_KEY:?error}
 
 networks:
   traefik-proxy:
