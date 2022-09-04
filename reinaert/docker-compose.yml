@@ -16,8 +16,7 @@ services:
     volumes:
       - ./creds:/var/www/html/creds
     environment:
-      app_url: https://reinaert.castelnuovo.dev
-      cron_key: ${CRON_KEY:?error}
+      APP_URL: https://reinaert.castelnuovo.dev
 
 networks:
   traefik-proxy:
