@@ -10,6 +10,7 @@ access_control:
         - backend.castelnuovo.dev
         - vault.castelnuovo.dev
         - invoices.castelnuovo.dev
+        - reinaert.castelnuovo.dev
       policy: bypass
 
     - domain: vosstraat.castelnuovo.dev
