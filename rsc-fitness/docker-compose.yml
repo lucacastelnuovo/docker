@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  rsc-fitness:
+    image: lucacastelnuovo/rsc-fitness:latest
+    container_name: rsc-fitness
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      RSC_USERNAME: ${RSC_USERNAME:?error}
+      RSC_PASSWORD: ${RSC_PASSWORD:?error}
+      S3_ACCESS_KEY: ${S3_ACCESS_KEY:?error}
+      S3_SECRET_KEY: ${S3_SECRET_KEY:?error}
