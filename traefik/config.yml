@@ -43,7 +43,7 @@ http:
     coolify:
       loadBalancer:
         servers:
-          - url: https://coolify.local.castelnuovo.xyz:3000
+          - url: http://coolify.local.castelnuovo.xyz:3000
 
   middlewares:
     auth:
