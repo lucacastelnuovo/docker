@@ -18,12 +18,6 @@ http:
       rule: "Host(`nas.castelnuovo.dev`)"
       service: nas
 
-    coolify:
-      entryPoints:
-        - https
-      rule: "Host(`coolify.castelnuovo.dev`)"
-      service: coolify
-
   services:
     proxmox:
       loadBalancer:
@@ -39,11 +33,6 @@ http:
       loadBalancer:
         servers:
           - url: https://nas.local.castelnuovo.xyz:5001
-
-    coolify:
-      loadBalancer:
-        servers:
-          - url: http://coolify.local.castelnuovo.xyz:3000
 
   middlewares:
     auth:
