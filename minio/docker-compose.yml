@@ -33,32 +33,9 @@ services:
       MINIO_IDENTITY_LDAP_USER_DN_SEARCH_FILTER: (uid=%s)
       MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD: ${MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD:?error}
       MINIO_IDENTITY_LDAP_SERVER_INSECURE: on
-
-      MINIO_KMS_KES_ENDPOINT: https://s3-kes:7373
-      MINIO_KMS_KES_CAPATH: /kes/server.crt
-      MINIO_KMS_KES_KEY_FILE: /kes/client.key
-      MINIO_KMS_KES_CERT_FILE: /kes/client.crt
-      MINIO_KMS_KES_KEY_NAME: default-key
     volumes:
-      - ./s3-kes:/kes
       - ./s3-minio:/data
     command: server /data --console-address ":9001"
-
-  s3-kes:
-    image: minio/kes:latest
-    container_name: s3-kes
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    networks:
-      - traefik-proxy
-    environment:
-      KES_IDENTITY: ${KES_IDENTITY:?error}
-      KES_APPROLE_ID: ${KES_APPROLE_ID:?error}
-      KES_APPROLE_SECRET: ${KES_APPROLE_SECRET:?error}
-    volumes:
-      - ./s3-kes:/root/.kes
-    command: server --config=/root/.kes/config.yml --auth=off
 
 networks:
   traefik-proxy:
