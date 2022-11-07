@@ -2,7 +2,7 @@ version: "3"
 
 services:
   teleport:
-    image: quay.io/gravitational/teleport:10.0.2
+    image: quay.io/gravitational/teleport:11
     container_name: teleport
     restart: unless-stopped
     security_opt:
