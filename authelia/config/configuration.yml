@@ -17,10 +17,7 @@ access_control:
     - domain: teleport.castelnuovo.dev
       policy: bypass
 
-    - domain: vault.castelnuovo.dev
-      policy: bypass
-
-    # Semi-bypass rules
+    # One-factor rules
     ####################
     # - domain: invoices.castelnuovo.dev
     # policy: bypass
@@ -31,27 +28,6 @@ access_control:
       policy: one_factor
       subject:
         - group:invoices.castelnuovo.dev
-
-    - domain: portainer.castelnuovo.dev
-      policy: bypass
-      resources:
-        - "^/api/webhooks([/?].*)?$"
-
-    - domain: portainer.castelnuovo.dev
-      policy: two_factor
-      subject:
-        - "group:portainer.castelnuovo.dev"
-
-    - domain: postal.castelnuovo.dev
-      policy: bypass
-      resources:
-        - "^/api/v1([/?].*)?$"
-        - "^/.well-known([/?].*)?$"
-
-    - domain: postal.castelnuovo.dev
-      policy: one_factor
-      subject:
-        - group:mail.castelnuovo.dev
 
     - domain: stats.castelnuovo.dev
       policy: bypass
@@ -78,9 +54,31 @@ access_control:
 
     - domain: ldap.castelnuovo.dev
       policy: bypass
+      policy: two_factor
+      subject:
+      - "group:ldap.castelnuovo.dev"
+
+    - domain: portainer.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/api/webhooks([/?].*)?$"
+
+    - domain: portainer.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - "group:portainer.castelnuovo.dev"
+
+    - domain: postal.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/api/v1([/?].*)?$"
+        - "^/.well-known([/?].*)?$"
+
+    - domain: postal.castelnuovo.dev
+      policy: bypass
       # policy: two_factor
       # subject:
-      # - "group:ldap.castelnuovo.dev"
+        # - group:postal.castelnuovo.dev
 
     - domain: traefik.castelnuovo.dev
       policy: two_factor
