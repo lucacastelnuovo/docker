@@ -22,26 +22,15 @@ access_control:
 
     # Semi-bypass rules
     ####################
-    - domain: mail.castelnuovo.dev
-      policy: bypass
-      resources:
-        - "^/api/v1([/?].*)?$"
-        - "^/.well-known([/?].*)?$"
-
-    - domain: mail.castelnuovo.dev
-      policy: one_factor
-      subject:
-        - group:mail.castelnuovo.dev
+    # - domain: invoices.castelnuovo.dev
+    # policy: bypass
+    # resources:
+    # - "^/api/v1([/?].*)?$"
 
     - domain: invoices.castelnuovo.dev
-      policy: bypass
-    #   resources:
-    #     - "^/api/v1([/?].*)?$"
-
-    # - domain: invoices.castelnuovo.dev
-    #   policy: one_factor
-    #   subject:
-    #     - group:invoices.castelnuovo.dev
+      policy: one_factor
+      subject:
+        - group:invoices.castelnuovo.dev
 
     - domain: portainer.castelnuovo.dev
       policy: bypass
@@ -52,6 +41,17 @@ access_control:
       policy: two_factor
       subject:
         - "group:portainer.castelnuovo.dev"
+
+    - domain: postal.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/api/v1([/?].*)?$"
+        - "^/.well-known([/?].*)?$"
+
+    - domain: postal.castelnuovo.dev
+      policy: one_factor
+      subject:
+        - group:mail.castelnuovo.dev
 
     - domain: stats.castelnuovo.dev
       policy: bypass
@@ -77,21 +77,15 @@ access_control:
         - "group:hp.castelnuovo.dev"
 
     - domain: ldap.castelnuovo.dev
-      policy: two_factor
-      subject:
-        - "group:ldap.castelnuovo.dev"
+      policy: bypass
+      # policy: two_factor
+      # subject:
+      # - "group:ldap.castelnuovo.dev"
 
     - domain: traefik.castelnuovo.dev
       policy: two_factor
       subject:
         - "group:traefik.castelnuovo.dev"
-
-    # Catch-all rules
-    ####################
-    - domain: "*.castelnuovo.dev"
-      policy: one_factor
-      subject:
-        - group:lldap_admin
 
 theme: dark
 default_redirection_url: https://authelia.castelnuovo.dev
