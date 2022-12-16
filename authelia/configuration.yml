@@ -1,22 +1,27 @@
 access_control:
   default_policy: deny
   rules:
-    - domain:
-        - castelnuovo.dev
-        - authelia.castelnuovo.dev
-        - teleport.castelnuovo.dev
-        - s3.castelnuovo.dev
-        - s3-console.castelnuovo.dev
-        - backend.castelnuovo.dev
-        - vault.castelnuovo.dev
-        - invoices.castelnuovo.dev
+    # Bypass rules
+    ####################
+    - domain: authelia.castelnuovo.dev
       policy: bypass
 
-    - domain: vosstraat.castelnuovo.dev
-      policy: one_factor
-      subject:
-        - group:vosstraat
+    - domain: castelnuovo.dev
+      policy: bypass
 
+    - domain:
+        - s3.castelnuovo.dev
+        - s3-console.castelnuovo.dev
+      policy: bypass
+
+    - domain: teleport.castelnuovo.dev
+      policy: bypass
+
+    - domain: vault.castelnuovo.dev
+      policy: bypass
+
+    # Semi-bypass rules
+    ####################
     - domain: email.castelnuovo.dev
       policy: bypass
       resources:
@@ -27,6 +32,26 @@ access_control:
       policy: one_factor
       subject:
         - group:email.castelnuovo.dev
+
+    - domain: invoices.castelnuovo.dev
+      policy: bypass
+    #   resources:
+    #     - "^/api/v1([/?].*)?$"
+
+    # - domain: invoices.castelnuovo.dev
+    #   policy: one_factor
+    #   subject:
+    #     - group:invoices.castelnuovo.dev
+
+    - domain: portainer.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/api/webhooks([/?].*)?$"
+
+    - domain: portainer.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - "group:portainer.castelnuovo.dev"
 
     - domain: stats.castelnuovo.dev
       policy: bypass
@@ -42,20 +67,27 @@ access_control:
       subject:
         - group:stats.castelnuovo.dev
 
-    - domain: portainer.castelnuovo.dev
-      policy: bypass
-      resources:
-        - "^/api/webhooks([/?].*)?$"
-
+    # Two-factor rules
+    ####################
     - domain:
-        - proxmox.castelnuovo.dev
-        - ldap.castelnuovo.dev
-        - portainer.castelnuovo.dev
-        - traefik.castelnuovo.dev
+        - hp1.castelnuovo.dev
+        - hp2.castelnuovo.dev
       policy: two_factor
       subject:
-        - "group:lldap_admin"
+        - "group:hp.castelnuovo.dev"
 
+    - domain: ldap.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - "group:ldap.castelnuovo.dev"
+
+    - domain: traefik.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - "group:traefik.castelnuovo.dev"
+
+    # Catch-all rules
+    ####################
     - domain: "*.castelnuovo.dev"
       policy: one_factor
       subject:
@@ -80,14 +112,13 @@ webauthn:
 authentication_backend:
   password_reset:
     disable: true
-    custom_url: ""
   refresh_interval: 1m
   ldap:
     implementation: custom
     url: ldap://ldap:389
     timeout: 5s
     start_tls: false
-    base_dn: dc=castelnuovo,dc=xyz
+    base_dn: dc=castelnuovo,dc=dev
     username_attribute: uid
     additional_users_dn: ou=people
     users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
@@ -96,10 +127,10 @@ authentication_backend:
     group_name_attribute: cn
     mail_attribute: mail
     display_name_attribute: displayName
-    user: uid=admin,ou=people,dc=castelnuovo,dc=xyz
+    user: uid=admin,ou=people,dc=castelnuovo,dc=dev
 
 session:
-  name: authelia_session
+  name: session
   domain: castelnuovo.dev
   same_site: lax
   expiration: 1h
