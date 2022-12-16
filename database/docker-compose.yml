@@ -2,39 +2,22 @@ version: "3"
 
 services:
   mariadb:
-    image: mariadb:10.7.4
+    image: linuxserver/mariadb:latest
     container_name: mariadb
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
     networks:
-      - database-net
+      - hp1-network
     volumes:
-      - ./mariadb:/var/lib/mysql
+      - ./mariadb:/config
     environment:
       TZ: Europe/Amsterdam
-      MYSQL_DATABASE: defaultdb
       MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?error}
     ports:
       - 3306:3306
 
-  postgres:
-    image: postgres:14.4
-    container_name: postgres
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    networks:
-      - database-net
-    volumes:
-      - ./postgres:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: ${POSTGES_ROOT_PASSWORD:?error}
-    ports:
-      - 5432:5432
-
-networks:
+hp1-network:
   database-net:
     driver: bridge
     external: true
