@@ -82,10 +82,9 @@ access_control:
       # - group:postal.castelnuovo.dev
 
     - domain: traefik.castelnuovo.dev
-      policy: bypass
-      # policy: two_factor
-      # subject:
-      #   - "group:traefik.castelnuovo.dev"
+      policy: two_factor
+      subject:
+        - "group:traefik.castelnuovo.dev"
 
 theme: dark
 default_redirection_url: https://authelia.castelnuovo.dev
