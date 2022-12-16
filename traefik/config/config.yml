@@ -18,11 +18,11 @@ http:
       rule: "Host(`hp2.castelnuovo.dev`)"
       service: hp2
 
-    # email:
-    #   entryPoints:
-    #     - https
-    #   rule: "Host(`mail.castelnuovo.dev`)"
-    #   service: email
+    mail:
+      entryPoints:
+        - https
+      rule: "Host(`postal.castelnuovo.dev`)"
+      service: mail
 
   services:
     nas:
@@ -40,10 +40,10 @@ http:
         servers:
           - url: https://hp2.device.castelnuovo.dev:8006
 
-    # email:
-    #   loadBalancer:
-    #     servers:
-    #       - url: http://email.vm.castelnuovo.dev:5000
+    mail:
+      loadBalancer:
+        servers:
+          - url: http://mail.vm.castelnuovo.dev
 
   middlewares:
     auth:
