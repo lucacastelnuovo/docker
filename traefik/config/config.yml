@@ -21,7 +21,7 @@ http:
     # email:
     #   entryPoints:
     #     - https
-    #   rule: "Host(`email.castelnuovo.dev`)"
+    #   rule: "Host(`mail.castelnuovo.dev`)"
     #   service: email
 
   services:

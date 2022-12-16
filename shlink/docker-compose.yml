@@ -22,7 +22,7 @@ services:
       DB_HOST: mariadb
       DB_NAME: db_shlink
       DB_USER: user_shlink
-      DB_PASSWORD: ${SHLINK_DATABASE_PASSWORD:?error}
+      DB_PASSWORD: ${SHLINK_DB_PASSWORD:?error}
       DEFAULT_BASE_URL_REDIRECT: https://lucacastelnuovo.nl
 
 networks:

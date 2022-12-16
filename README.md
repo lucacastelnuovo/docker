@@ -20,14 +20,59 @@ cd .. && rmdir docker.ltc
 ```bash
 docker network create hp1-network
 
+# MariaDB
+cd mariadb
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# LLDAP - TODO: mail_password
+cd lldap
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# Authelia - TODO: mail_password
+cd authelia
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
 # Traefik
 cd traefik
-chmod 600 acme.json
-cp .env.example .env
-nano .env
-docker-compose up -d
-cd ..
+cp .env.example .env && nano .env
+touch config/acme.json && chmod 600 config/acme.json
+docker compose up -d && cd ..
 
 # Portainer
-docker-compose -f portainer/docker-compose.yml up -d
+cd portainer
+docker compose up -d && cd ..
+
+# Minio - TODO: policy command
+cd minio
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# Teleport - TODO: all
+cd teleport
+docker compose up -d && cd ..
+
+# Plausible - TODO: all
+# TODO: setup directory
+
+# Shlink - TODO: geolite_key
+cd shlink
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# Invoices - TODO: mail_password
+cd invoices
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# Status
+cd status
+docker compose up -d && cd ..
+
+# Watchtower - TODO: mail_password
+cd watchtower
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
 ```

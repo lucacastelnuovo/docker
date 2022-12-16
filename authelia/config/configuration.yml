@@ -22,16 +22,16 @@ access_control:
 
     # Semi-bypass rules
     ####################
-    - domain: email.castelnuovo.dev
+    - domain: mail.castelnuovo.dev
       policy: bypass
       resources:
         - "^/api/v1([/?].*)?$"
         - "^/.well-known([/?].*)?$"
 
-    - domain: email.castelnuovo.dev
+    - domain: mail.castelnuovo.dev
       policy: one_factor
       subject:
-        - group:email.castelnuovo.dev
+        - group:mail.castelnuovo.dev
 
     - domain: invoices.castelnuovo.dev
       policy: bypass
@@ -153,8 +153,8 @@ storage:
 notifier:
   disable_startup_check: true
   smtp:
-    host: mx.email.castelnuovo.dev
+    host: mx.mail.castelnuovo.dev
     port: 25
     username: castelnuovo/production
-    sender: "authelia@email.castelnuovo.dev"
+    sender: "authelia@mail.castelnuovo.dev"
     subject: "[authelia.castelnuovo.dev] {title}"

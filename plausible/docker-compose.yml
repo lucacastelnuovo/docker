@@ -44,7 +44,7 @@ services:
       ADMIN_USER_EMAIL: luca@castelnuovo.dev
       ADMIN_USER_NAME: Luca Castelnuovo
       ADMIN_USER_PWD: ${PLAUSIBLE_ADMIN_USER_PWD:?error}
-      MAILER_EMAIL: stats@email.castelnuovo.dev
+      MAILER_EMAIL: stats@mail.castelnuovo.dev
       SMTP_HOST_ADDR: email.local.castelnuovo.xyz
       SMTP_USER_NAME: castelnuovo/production
       SMTP_USER_PWD: ${PLAUSIBLE_SMTP_USER_PWD:?error}

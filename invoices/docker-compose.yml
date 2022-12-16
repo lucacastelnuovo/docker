@@ -23,12 +23,12 @@ services:
       DB_USERNAME: user_invoices
       DB_PASSWORD: ${INVOICES_DB_PASSWORD:?error}
 
-      MAIL_HOST: mx.email.castelnuovo.dev
+      MAIL_HOST: mx.mail.castelnuovo.dev
       MAIL_PORT: 25
       MAIL_USERNAME: castelnuovo/production
-      MAIL_PASSWORD: ${INVOICES_SMTP_PASSWORD:?error}
+      MAIL_PASSWORD: ${INVOICES_MAIL_PASSWORD:?error}
       MAIL_ENCRYPTION: tls
-      MAIL_FROM_ADDRESS: invoices@email.castelnuovo.dev
+      MAIL_FROM_ADDRESS: invoices@mail.castelnuovo.dev
       MAIL_FROM_NAME: Castelnuovo Development
 
       SANCTUM_STATEFUL_DOMAINS: invoices.castelnuovo.dev
