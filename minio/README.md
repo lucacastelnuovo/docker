@@ -1,6 +1,10 @@
 # MinIO
 
-mc admin policy set s3 consoleAdmin user="uid=ltcastelnuovo,ou=people,dc=castelnuovo,dc=xyz"
+### Installation
+
+mc admin policy set s3 consoleAdmin user="uid=ltcastelnuovo,ou=people,dc=castelnuovo,dc=dev"
+
+### Policy template
 
 ```json
 {
@@ -14,7 +18,7 @@ mc admin policy set s3 consoleAdmin user="uid=ltcastelnuovo,ou=people,dc=casteln
         "s3:DeleteObject",
         "s3:PutObjectAcl"
       ],
-      "Resource": ["arn:aws:s3:::invoices.castelnuovo.dev/*"]
+      "Resource": ["arn:aws:s3:::NAME.castelnuovo.dev/*"]
     }
   ]
 }

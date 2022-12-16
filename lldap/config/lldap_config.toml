@@ -7,8 +7,20 @@
 ## You can set it with the LLDAP_VERBOSE environment variable.
 # verbose=false
 
+## The host address that the LDAP server will be bound to.
+## To enable IPv6 support, simply switch "ldap_host" to "::":
+## To only allow connections from localhost (if you want to restrict to local self-hosted services),
+## change it to "127.0.0.1" ("::1" in case of IPv6)".
+#ldap_host = "0.0.0.0"
+
 ## The port on which to have the LDAP server.
 ldap_port = 389
+
+## The host address that the HTTP server will be bound to.
+## To enable IPv6 support, simply switch "http_host" to "::".
+## To only allow connections from localhost (if you want to restrict to local self-hosted services),
+## change it to "127.0.0.1" ("::1" in case of IPv6)".
+#http_host = "0.0.0.0"
 
 ## The port on which to have the HTTP server, for user login and
 ## administration.
@@ -27,7 +39,7 @@ http_url = "https://ldap.castelnuovo.dev"
 ## This can also be set from a file's contents by specifying the file path
 ## in the LLDAP_JWT_SECRET_FILE environment variable
 ## You can generate it with (on linux):
-## LC_ALL=C tr -dc 'A-Za-z0-9!"#%&'\''()*+,-./:;<=>?@[\]^_{|}~' </dev/urandom | head -c 32; echo ''
+## LC_ALL=C tr -dc 'A-Za-z0-9!#%&'\''()*+,-./:;<=>?@[\]^_{|}~' </dev/urandom | head -c 32; echo ''
 #jwt_secret = "REPLACE_WITH_RANDOM"
 
 ## Base DN for LDAP.
@@ -37,7 +49,7 @@ http_url = "https://ldap.castelnuovo.dev"
 ## The sample value is for "example.com", but you can extend it with as
 ## many "dc" as you want, and you don't actually need to own the domain
 ## name.
-ldap_base_dn = "dc=castelnuovo,dc=xyz"
+ldap_base_dn = "dc=castelnuovo,dc=dev"
 
 ## Admin username.
 ## For the LDAP interface, a value of "admin" here will create the LDAP
@@ -73,7 +85,6 @@ ldap_base_dn = "dc=castelnuovo,dc=xyz"
 ##  - "mysql://mysql-user:password@mysql-server/my-database"
 ##
 ## This can be overridden with the DATABASE_URL env variable.
-# TODO: migrate to mysql
 database_url = "sqlite:///data/users.db?mode=rwc"
 
 ## Private key file.
@@ -95,24 +106,24 @@ key_file = "/data/private_key"
 ## Options to configure SMTP parameters, to send password reset emails.
 ## To set these options from environment variables, use the following format
 ## (example with "password"): LLDAP_SMTP_OPTIONS__PASSWORD
-[smtp_options]
-    ## Whether to enabled password reset via email, from LLDAP.
-    enable_password_reset=true
-    ## The SMTP server.
-    server="mx.email.castelnuovo.dev"
-    ## The SMTP port.
-    port=25
-    ## Whether to connect with TLS.
-    tls_required=true
-    ## The SMTP user, usually your email address.
-    user="castelnuovo/production"
-    ## The SMTP password.
-    #password="password"
-    ## The header field, optional: how the sender appears in the email. The first
-    ## is a free-form name, followed by an email between <>.
-    from="ldap <ldap@email.castelnuovo.dev>"
-    ## Same for reply-to, optional.
-    #reply_to="Do not reply <noreply@localhost>"
+#[smtp_options]
+## Whether to enabled password reset via email, from LLDAP.
+enable_password_reset = false
+## The SMTP server.
+server = "mx.email.castelnuovo.dev"
+## The SMTP port.
+port = 25
+## How the connection is encrypted, either "TLS" or "STARTTLS".
+smtp_encryption = "TLS"
+## The SMTP user, usually your email address.
+user = "castelnuovo/production"
+## The SMTP password.
+#password="password"
+## The header field, optional: how the sender appears in the email. The first
+## is a free-form name, followed by an email between <>.
+from = "ldap <ldap@email.castelnuovo.dev>"
+## Same for reply-to, optional.
+#reply_to="Do not reply <noreply@localhost>"
 
 ## Options to configure LDAPS.
 ## To set these options from environment variables, use the following format

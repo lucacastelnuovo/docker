@@ -10,14 +10,14 @@ services:
     networks:
       - hp1-network
     volumes:
-      - ./mariadb:/config
+      - ./data:/config
     environment:
       TZ: Europe/Amsterdam
       MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?error}
     ports:
       - 3306:3306
 
-hp1-network:
-  database-net:
+networks:
+  hp1-network:
     driver: bridge
     external: true

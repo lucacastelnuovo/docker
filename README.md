@@ -1,14 +1,33 @@
 # Docker.ltc files 🐋
 
-```
-$ git clone https://github.com/Luca-Castelnuovo/docker.ltc ./
+### Server installation
+
+```bash
+apt update -y
+apt upgrade -y
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+./get-docker.sh
+
+git clone https://github.com/Luca-Castelnuovo/docker.ltc
+
+cd docker.ltc && mv * .. && mv .* ..
+cd .. && rmdir docker.ltc
 ```
 
-Copy all .env.example files to .env files and edit them.
+### Docker installation
 
-```
-$ sudo chmod 600 ./traefik/acme.json
-$ docker network create traefik-proxy
-$ docker-compose -f traefik/docker-compose.yml up -d
-$ docker-compose -f portainer/docker-compose.yml up -d
+```bash
+docker network create hp1-network
+
+# Traefik
+cd traefik
+chmod 600 acme.json
+cp .env.example .env
+nano .env
+docker-compose up -d
+cd ..
+
+# Portainer
+docker-compose -f portainer/docker-compose.yml up -d
 ```

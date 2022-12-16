@@ -8,13 +8,12 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - database-net
-      - traefik-proxy
+      - hp1-network
     labels:
       traefik.enable: true
       traefik.http.routers.authelia.entryPoints: https
     volumes:
-      - .:/config
+      - ./config:/config
     environment:
       AUTHELIA_JWT_SECRET: ${AUTHELIA_JWT_SECRET:?error}
       AUTHELIA_SESSION_SECRET: ${AUTHELIA_SESSION_SECRET:?error}
@@ -24,9 +23,6 @@ services:
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD: ${AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD:?error}
 
 networks:
-  database-net:
-    driver: bridge
-    external: true
-  traefik-proxy:
+  hp1-network:
     driver: bridge
     external: true

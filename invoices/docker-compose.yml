@@ -8,12 +8,10 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - database-net
-      - traefik-proxy
+      - hp1-network
     labels:
       traefik.enable: true
       traefik.http.routers.invoices.entrypoints: https
-      traefik.http.services.invoices.loadbalancer.server.port: 80
     environment:
       APP_ENV: production
       APP_DEBUG: "false"
@@ -23,25 +21,20 @@ services:
       DB_PORT: 3306
       DB_DATABASE: db_invoices
       DB_USERNAME: user_invoices
-      DB_PASSWORD: ${DB_PASSWORD:?error}
+      DB_PASSWORD: ${INVOICES_DB_PASSWORD:?error}
 
       MAIL_HOST: mx.email.castelnuovo.dev
       MAIL_PORT: 25
       MAIL_USERNAME: castelnuovo/production
-      MAIL_PASSWORD: ${MAIL_PASSWORD:?error}
+      MAIL_PASSWORD: ${INVOICES_SMTP_PASSWORD:?error}
       MAIL_ENCRYPTION: tls
       MAIL_FROM_ADDRESS: invoices@email.castelnuovo.dev
       MAIL_FROM_NAME: Castelnuovo Development
 
       SANCTUM_STATEFUL_DOMAINS: invoices.castelnuovo.dev
       SESSION_DOMAIN: invoices.castelnuovo.dev
-    volumes:
-      - ./storage:/var/www/html/storage
 
 networks:
-  database-net:
-    driver: bridge
-    external: true
-  traefik-proxy:
+  hp1-network:
     driver: bridge
     external: true

@@ -1,38 +1,49 @@
 http:
   routers:
-    proxmox:
-      entryPoints:
-        - https
-      rule: "Host(`proxmox.castelnuovo.dev`)"
-      service: proxmox
-
-    email:
-      entryPoints:
-        - https
-      rule: "Host(`email.castelnuovo.dev`)"
-      service: email
-
     nas:
       entryPoints:
         - https
       rule: "Host(`nas.castelnuovo.dev`)"
       service: nas
 
+    hp1:
+      entryPoints:
+        - https
+      rule: "Host(`hp1.castelnuovo.dev`)"
+      service: hp1
+
+    hp2:
+      entryPoints:
+        - https
+      rule: "Host(`hp2.castelnuovo.dev`)"
+      service: hp2
+
+    # email:
+    #   entryPoints:
+    #     - https
+    #   rule: "Host(`email.castelnuovo.dev`)"
+    #   service: email
+
   services:
-    proxmox:
-      loadBalancer:
-        servers:
-          - url: https://teresa.local.castelnuovo.xyz:8006
-
-    email:
-      loadBalancer:
-        servers:
-          - url: http://email.local.castelnuovo.xyz:5000
-
     nas:
       loadBalancer:
         servers:
-          - url: https://nas.local.castelnuovo.xyz:5001
+          - url: https://nas.device.castelnuovo.dev:5001
+
+    hp1:
+      loadBalancer:
+        servers:
+          - url: https://hp1.device.castelnuovo.dev:8006
+
+    hp2:
+      loadBalancer:
+        servers:
+          - url: https://hp2.device.castelnuovo.dev:8006
+
+    # email:
+    #   loadBalancer:
+    #     servers:
+    #       - url: http://email.vm.castelnuovo.dev:5000
 
   middlewares:
     auth:

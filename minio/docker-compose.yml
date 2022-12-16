@@ -8,7 +8,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - traefik-proxy
+      - hp1-network
     labels:
       traefik.enable: true
 
@@ -28,16 +28,16 @@ services:
       MINIO_BROWSER_REDIRECT_URL: https://s3-console.castelnuovo.dev
 
       MINIO_IDENTITY_LDAP_SERVER_ADDR: ldap:389
-      MINIO_IDENTITY_LDAP_LOOKUP_BIND_DN: cn=admin,ou=people,dc=castelnuovo,dc=xyz
-      MINIO_IDENTITY_LDAP_USER_DN_SEARCH_BASE_DN: ou=people,dc=castelnuovo,dc=xyz
+      MINIO_IDENTITY_LDAP_LOOKUP_BIND_DN: cn=admin,ou=people,dc=castelnuovo,dc=dev
+      MINIO_IDENTITY_LDAP_USER_DN_SEARCH_BASE_DN: ou=people,dc=castelnuovo,dc=dev
       MINIO_IDENTITY_LDAP_USER_DN_SEARCH_FILTER: (uid=%s)
       MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD: ${MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD:?error}
       MINIO_IDENTITY_LDAP_SERVER_INSECURE: on
     volumes:
-      - ./s3-minio:/data
+      - ./data:/data
     command: server /data --console-address ":9001"
 
 networks:
-  traefik-proxy:
+  hp1-network:
     driver: bridge
     external: true

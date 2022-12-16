@@ -8,8 +8,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - database-net
-      - traefik-proxy
+      - hp1-network
     labels:
       traefik.enable: true
       traefik.http.routers.shlink.entryPoints: https
@@ -17,19 +16,16 @@ services:
     environment:
       DEFAULT_DOMAIN: castelnuovo.dev
       IS_HTTPS_ENABLED: true
-      GEOLITE_LICENSE_KEY: ${GEOLITE_LICENSE_KEY:?error}
+      GEOLITE_LICENSE_KEY: ${SHLINK_GEOLITE_LICENSE_KEY:?error}
       TIMEZONE: Europe/Amsterdam
       DB_DRIVER: mysql
       DB_HOST: mariadb
       DB_NAME: db_shlink
       DB_USER: user_shlink
-      DB_PASSWORD: ${DATABASE_PASSWORD:?error}
+      DB_PASSWORD: ${SHLINK_DATABASE_PASSWORD:?error}
       DEFAULT_BASE_URL_REDIRECT: https://lucacastelnuovo.nl
 
 networks:
-  database-net:
-    driver: bridge
-    external: true
-  traefik-proxy:
+  hp1-network:
     driver: bridge
     external: true

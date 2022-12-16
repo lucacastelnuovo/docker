@@ -2,5 +2,6 @@
 !.gitignore
 !docker-compose.yml
 !.env.example
-!config.yml
-!traefik.yml
+!config/
+!config/config.yml
+!config/traefik.yml

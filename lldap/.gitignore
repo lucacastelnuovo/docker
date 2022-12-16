@@ -2,5 +2,5 @@
 !.gitignore
 !docker-compose.yml
 !.env.example
-!data/
-!data/lldap_config.toml
+!config/
+!config/lldap_config.toml

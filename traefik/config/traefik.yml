@@ -65,7 +65,7 @@ providers:
 
   docker:
     watch: true
-    network: traefik-proxy
+    network: hp1-network
     defaultRule: 'Host(`{{ index .Labels "com.docker.compose.service"}}.castelnuovo.dev`)'
     swarmModeRefreshSeconds: 15s
     exposedByDefault: false

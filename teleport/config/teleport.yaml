@@ -21,13 +21,6 @@ auth_service:
   authentication:
     type: github
 
-ssh_service:
-  enabled: "yes"
-  commands:
-    - name: hostname
-      command: [hostname]
-      period: 1m0s
-
 proxy_service:
   enabled: "yes"
   acme: {}

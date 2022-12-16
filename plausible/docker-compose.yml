@@ -3,15 +3,15 @@ version: "3"
 services:
   mail:
     image: bytemark/smtp:latest
-    restart: always
+    restart: unless-stopped
     networks:
-      - stats-net
+      - stats-network
 
   stats_events:
     image: yandex/clickhouse-server:21.3.2.5
-    restart: always
+    restart: unless-stopped
     networks:
-      - stats-net
+      - stats-network
     volumes:
       - ./data:/var/lib/clickhouse
       - ./clickhouse-config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
@@ -28,36 +28,32 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - stats-net
-      - database-net
-      - traefik-proxy
+      - stats-network
+      - hp1-network
     labels:
       traefik.enable: true
       traefik.http.routers.stats.entrypoints: https
       traefik.http.services.stats.loadbalancer.server.port: 8000
     environment:
-      BASE_URL: ${BASE_URL:?error}
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE:?error}
-      DATABASE_URL: ${DATABASE_URL:?error}
+      BASE_URL: ${PLAUSIBLE_BASE_URL:?error}
+      SECRET_KEY_BASE: ${PLAUSIBLE_SECRET_KEY_BASE:?error}
+      DATABASE_URL: ${PLAUSIBLE_DATABASE_URL:?error}
       CLICKHOUSE_DATABASE_URL: http://stats_events:8123/plausible_events_db
       DISABLE_AUTH: "true"
       DISABLE_REGISTRATION: "true"
       ADMIN_USER_EMAIL: luca@castelnuovo.dev
       ADMIN_USER_NAME: Luca Castelnuovo
-      ADMIN_USER_PWD: ${ADMIN_USER_PWD:?error}
+      ADMIN_USER_PWD: ${PLAUSIBLE_ADMIN_USER_PWD:?error}
       MAILER_EMAIL: stats@email.castelnuovo.dev
       SMTP_HOST_ADDR: email.local.castelnuovo.xyz
       SMTP_USER_NAME: castelnuovo/production
-      SMTP_USER_PWD: ${SMTP_USER_PWD:?error}
+      SMTP_USER_PWD: ${PLAUSIBLE_SMTP_USER_PWD:?error}
     command: sh -c "/entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
 
 networks:
-  stats-net:
+  stats-network:
     driver: bridge
     external: false
-  database-net:
-    driver: bridge
-    external: true
-  traefik-proxy:
+  hp1-network:
     driver: bridge
     external: true
