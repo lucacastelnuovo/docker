@@ -24,11 +24,10 @@ access_control:
     # policy: bypass
     # resources:
     # - "^/api/v1([/?].*)?$"
-
     - domain: invoices.castelnuovo.dev
       policy: one_factor
-      subject:
-        - group:invoices.castelnuovo.dev
+      # subject: # TODO: add group
+      #   - group:invoices.castelnuovo.dev
 
     - domain: stats.castelnuovo.dev
       policy: bypass
@@ -41,22 +40,22 @@ access_control:
 
     - domain: stats.castelnuovo.dev
       policy: one_factor
-      subject:
-        - group:stats.castelnuovo.dev
+      # subject: # TODO: add group
+      #   - group:stats.castelnuovo.dev
 
     # Two-factor rules
     ####################
     - domain:
         - hp1.castelnuovo.dev
         - hp2.castelnuovo.dev
-      policy: two_factor
-      subject:
-        - group:hp.castelnuovo.dev
+      policy: bypass # TODO: two_factor
+      # subject: # TODO: add group
+      #   - group:hp.castelnuovo.dev
 
     - domain: ldap.castelnuovo.dev
-      policy: two_factor
-      subject:
-        - group:ldap.castelnuovo.dev
+      policy: bypass # TODO: two_factor
+      # subject: # TODO: add group
+      #   - group:ldap.castelnuovo.dev
 
     - domain: portainer.castelnuovo.dev
       policy: bypass
@@ -64,9 +63,9 @@ access_control:
         - "^/api/webhooks([/?].*)?$"
 
     - domain: portainer.castelnuovo.dev
-      policy: two_factor
-      subject:
-        - group:portainer.castelnuovo.dev
+      policy: bypass # TODO: two_factor
+      # subject: # TODO: add group
+      #   - group:portainer.castelnuovo.dev
 
     - domain: postal.castelnuovo.dev
       policy: bypass
@@ -75,14 +74,14 @@ access_control:
         - "^/.well-known([/?].*)?$"
 
     - domain: postal.castelnuovo.dev
-      policy: bypass # two_factor
-      # subject:
+      policy: bypass # TODO: two_factor
+      # subject: # TODO: add group
       # - group:postal.castelnuovo.dev
 
     - domain: traefik.castelnuovo.dev
       policy: two_factor
-      subject:
-        - group:traefik.castelnuovo.dev
+      # subject: # TODO: add group
+      #   - group:traefik.castelnuovo.dev
 
 theme: dark
 default_redirection_url: https://authelia.castelnuovo.dev
