@@ -14,10 +14,8 @@ teleport:
 auth_service:
   enabled: "yes"
   cluster_name: teleport.castelnuovo.dev
-  public_addr: teleport.castlenuovo.dev:3025
+  public_addr: teleport.castlenuovo.dev:443
   proxy_listener_mode: multiplex
-  # listen_addr: 0.0.0.0:3025
-  # message_of_the_day: "Opbokken"
   authentication:
     type: local
     # second_factor: otp
