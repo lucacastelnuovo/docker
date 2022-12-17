@@ -65,9 +65,9 @@ access_control:
 
     - domain: portainer.castelnuovo.dev
       policy: bypass
-      # policy: two_factor
-      # subject:
-      #   - "group:portainer.castelnuovo.dev"
+      policy: two_factor
+      subject:
+        - "group:portainer.castelnuovo.dev"
 
     - domain: postal.castelnuovo.dev
       policy: bypass
