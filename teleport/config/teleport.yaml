@@ -1,5 +1,4 @@
-version: v1
-# version: v2
+version: v3
 
 teleport:
   nodename: teleport.castelnuovo.dev
@@ -16,13 +15,14 @@ auth_service:
   enabled: "yes"
   cluster_name: teleport.castelnuovo.dev
   public_addr: teleport.castlenuovo.dev:3025
-  proxy_listener_mode: separate
-  # proxy_listener_mode: multiplex
+  proxy_listener_mode: multiplex
+  # listen_addr: 0.0.0.0:3025
+  # message_of_the_day: "Opbokken"
   authentication:
-    type: github
+    type: local
+    # second_factor: otp
 
 proxy_service:
   enabled: "yes"
-  acme: {}
   https_keypairs: []
-  public_addr: teleport.castelnuovo.dev:443
+  acme: {}
