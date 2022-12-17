@@ -24,22 +24,6 @@ services:
       - 3024:3024
       - 3025:3025
 
-  bootstrap:
-    image: public.ecr.aws/gravitational/teleport:11
-    container_name: teleport-bootstrap
-    security_opt:
-      - no-new-privileges:true
-    networks:
-      - hp1-network
-    volumes:
-      - ./config:/etc/teleport
-      - ./data:/var/lib/teleport
-      - ./certs:/mnt/shared/certs
-    entrypoint: /bin/sh
-    command: -c "/etc/teleport.d/scripts/generate-certs.sh"
-    depends_on:
-      - teleport
-
 networks:
   hp1-network:
     driver: bridge
