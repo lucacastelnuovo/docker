@@ -45,10 +45,11 @@ docker compose up -d && cd ..
 cd portainer
 docker compose up -d && cd ..
 
-# Minio - TODO: policy command
+# Minio
 cd minio
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
+# on mac execute: mc admin policy set s3 consoleAdmin user="uid=ltcastelnuovo,ou=people,dc=castelnuovo,dc=dev"
 
 # Teleport - TODO: all
 cd teleport

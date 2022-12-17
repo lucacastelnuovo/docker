@@ -19,6 +19,7 @@ access_control:
 
     # One-factor rules
     ####################
+    # TODO: view route for viewing pdf in browser
     # - domain: invoices.castelnuovo.dev
     # policy: bypass
     # resources:
@@ -50,13 +51,12 @@ access_control:
         - hp2.castelnuovo.dev
       policy: two_factor
       subject:
-        - "group:hp.castelnuovo.dev"
+        - group:hp.castelnuovo.dev
 
     - domain: ldap.castelnuovo.dev
-      policy: bypass
-      # policy: two_factor
-      # subject:
-      # - "group:ldap.castelnuovo.dev"
+      policy: two_factor
+      subject:
+        - group:ldap.castelnuovo.dev
 
     - domain: portainer.castelnuovo.dev
       policy: bypass
@@ -64,10 +64,9 @@ access_control:
         - "^/api/webhooks([/?].*)?$"
 
     - domain: portainer.castelnuovo.dev
-      policy: bypass
       policy: two_factor
       subject:
-        - "group:portainer.castelnuovo.dev"
+        - group:portainer.castelnuovo.dev
 
     - domain: postal.castelnuovo.dev
       policy: bypass
@@ -76,15 +75,14 @@ access_control:
         - "^/.well-known([/?].*)?$"
 
     - domain: postal.castelnuovo.dev
-      policy: bypass
-      # policy: two_factor
+      policy: bypass # two_factor
       # subject:
       # - group:postal.castelnuovo.dev
 
     - domain: traefik.castelnuovo.dev
       policy: two_factor
       subject:
-        - "group:traefik.castelnuovo.dev"
+        - group:traefik.castelnuovo.dev
 
 theme: dark
 default_redirection_url: https://authelia.castelnuovo.dev
@@ -145,6 +143,8 @@ storage:
 
 notifier:
   disable_startup_check: true
+  # filesystem:
+  #   filename: /config/notification.txt
   smtp:
     host: mail.castelnuovo.dev
     port: 25
