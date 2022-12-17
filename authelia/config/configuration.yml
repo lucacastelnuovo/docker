@@ -121,7 +121,7 @@ authentication_backend:
     user: uid=admin,ou=people,dc=castelnuovo,dc=dev
 
 session:
-  name: session
+  name: authelia_session
   domain: castelnuovo.dev
   same_site: lax
   expiration: 1h
