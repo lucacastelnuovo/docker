@@ -21,6 +21,7 @@ auth_service:
   authentication:
     type: local
     # second_factor: otp
+    # require_session_mfa: yes
 
 proxy_service:
   enabled: "yes"
