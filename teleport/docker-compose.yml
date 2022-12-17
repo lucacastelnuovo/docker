@@ -18,7 +18,6 @@ services:
     volumes:
       - ./config:/etc/teleport
       - ./data:/var/lib/teleport
-      - ./certs:/mnt/shared/certs
     ports:
       - 3023:3023
       - 3024:3024
