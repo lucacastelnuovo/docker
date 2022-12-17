@@ -26,6 +26,8 @@ ssh_service:
 
 proxy_service:
   enabled: "yes"
-  public_addr: teleport.castelnuovo.dev
+  public_addr: teleport.castelnuovo.dev:443
+  ssh_public_addr: teleport.castelnuovo.dev:3023
+  tunnel_public_addr: teleport.castelnuovo.dev:3024
   https_keypairs: []
   acme: {}
