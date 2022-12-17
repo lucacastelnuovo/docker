@@ -16,10 +16,10 @@ auth_service:
   cluster_name: teleport.castelnuovo.dev
   public_addr: teleport.castlenuovo.dev:443
   proxy_listener_mode: multiplex
-  authentication:
-    type: local
-    # second_factor: otp
-    # require_session_mfa: yes
+  # authentication:
+  #   type: local
+  #   second_factor: otp
+  #   require_session_mfa: yes
 
 proxy_service:
   enabled: "yes"
