@@ -12,13 +12,13 @@ mc admin policy set s3 consoleAdmin user="uid=ltcastelnuovo,ou=people,dc=casteln
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:DeleteObject",
-        "s3:PutObjectAcl"
-      ],
-      "Resource": ["arn:aws:s3:::NAME.castelnuovo.dev/*"]
+      "Action": ["s3:ListBucket"],
+      "Resource": "arn:aws:s3:::NAME.castelnuovo.dev"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:PutObject", "s3:GetObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::NAME.castelnuovo.dev/*"
     }
   ]
 }
