@@ -44,6 +44,11 @@ access_control:
         - group:stats.castelnuovo.dev
 
     - domain: status.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/status([/?].*)?$"
+
+    - domain: status.castelnuovo.dev
       policy: one_factor
       subject:
         - group:status.castelnuovo.dev
