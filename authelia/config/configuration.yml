@@ -76,7 +76,6 @@ access_control:
       policy: bypass
       resources:
         - "^/api/v1([/?].*)?$"
-        - "^/.well-known([/?].*)?$"
 
     - domain: postal.castelnuovo.dev
       policy: two_factor
