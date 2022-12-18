@@ -7,7 +7,7 @@ services:
     networks:
       - stats-network
 
-  plausible_db:
+  stats_db:
     image: postgres:14-alpine
     restart: unless-stopped
     networks:
@@ -18,7 +18,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
-  plausible_events_db:
+  stats_events:
     image: clickhouse/clickhouse-server:22.6-alpine
     restart: unless-stopped
     networks:
@@ -28,7 +28,7 @@ services:
       - ./config/config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
       - ./config/user.xml:/etc/clickhouse-server/users.d/logging.xml:ro
 
-  plausible:
+  stats:
     image: plausible/analytics:latest
     container_name: stats
     restart: unless-stopped
@@ -40,12 +40,11 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.stats.entrypoints: https
-      traefik.http.routers.stats.rule: "Host(`stats2.castelnuovo.dev`)"
       traefik.http.services.stats.loadbalancer.server.port: 8000
     environment:
       BASE_URL: https://stats.castelnuovo.dev
-      DATABASE_URL: postgres://postgres:postgres@plausible_db/plausible_db
-      CLICKHOUSE_DATABASE_URL: http://plausible_events_db:8123/plausible_events_db
+      DATABASE_URL: postgres://postgres:postgres@stats_db/plausible_db
+      CLICKHOUSE_DATABASE_URL: http://stats_events:8123/plausible_events_db
       SECRET_KEY_BASE: ${PLAUSIBLE_KEY:?error}
       DISABLE_AUTH: "true"
       DISABLE_REGISTRATION: "true"
@@ -59,8 +58,8 @@ services:
       # SMTP_HOST_SSL_ENABLED: true
     command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
     depends_on:
-      - plausible_db
-      - plausible_events_db
+      - stats_db
+      - stats_events
       - mail
 
 networks:
