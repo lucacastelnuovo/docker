@@ -110,7 +110,7 @@ key_file = "/data/private_key"
 ## Whether to enabled password reset via email, from LLDAP.
 enable_password_reset = false
 ## The SMTP server.
-server = "mx.email.castelnuovo.dev"
+server = "mail.castelnuovo.dev"
 ## The SMTP port.
 port = 25
 ## How the connection is encrypted, either "TLS" or "STARTTLS".
