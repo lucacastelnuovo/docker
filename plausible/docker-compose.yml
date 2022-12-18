@@ -40,6 +40,7 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.stats.entrypoints: https
+      traefik.http.routers.stats.rule: "Host(`stats2.castelnuovo.dev`)"
       traefik.http.services.stats.loadbalancer.server.port: 8000
     environment:
       BASE_URL: https://stats.castelnuovo.dev
