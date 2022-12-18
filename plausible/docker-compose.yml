@@ -10,9 +10,12 @@ services:
   plausible_db:
     image: postgres:14-alpine
     restart: unless-stopped
+    networks:
+      - stats-network
     volumes:
       - ./data/stats_db:/var/lib/postgresql/data
     environment:
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
   plausible_events_db:
@@ -24,10 +27,6 @@ services:
       - ./data/stats_events:/var/lib/clickhouse
       - ./config/config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
       - ./config/user.xml:/etc/clickhouse-server/users.d/logging.xml:ro
-    ulimits:
-      nofile:
-        soft: 262144
-        hard: 262144
 
   plausible:
     image: plausible/analytics:latest
@@ -44,8 +43,8 @@ services:
       traefik.http.services.stats.loadbalancer.server.port: 8000
     environment:
       BASE_URL: https://stats.castelnuovo.dev
-      # DATABASE_URL: postgres://postgres:postgres@plausible_db/plausible_db
-      # CLICKHOUSE_DATABASE_URL: http://plausible_events_db:8123/plausible_events_db
+      DATABASE_URL: postgres://postgres:postgres@plausible_db/plausible_db
+      CLICKHOUSE_DATABASE_URL: http://plausible_events_db:8123/plausible_events_db
       SECRET_KEY_BASE: ${PLAUSIBLE_KEY:?error}
       DISABLE_AUTH: "true"
       DISABLE_REGISTRATION: "true"
