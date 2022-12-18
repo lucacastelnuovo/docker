@@ -48,7 +48,7 @@ services:
       SECRET_KEY_BASE: ${STATS_KEY:?error}
       ADMIN_USER_NAME: admin
       ADMIN_USER_EMAIL: plausible@mail.castelnuovo.dev
-      ADMIN_USER_PWD: adminpassword
+      ADMIN_USER_PWD: password
       DISABLE_AUTH: true
       DISABLE_REGISTRATION: true
       MAILER_EMAIL: stats@mail.castelnuovo.dev
