@@ -46,8 +46,8 @@ services:
       DATABASE_URL: postgres://postgres:postgres@stats_db/plausible_db
       CLICKHOUSE_DATABASE_URL: http://stats_events:8123/plausible_events_db
       SECRET_KEY_BASE: ${PLAUSIBLE_KEY:?error}
-      DISABLE_AUTH: "true"
-      DISABLE_REGISTRATION: "true"
+      DISABLE_AUTH: true
+      DISABLE_REGISTRATION: true
       ADMIN_USER_EMAIL: luca@castelnuovo.dev
       ADMIN_USER_NAME: Luca Castelnuovo
       ADMIN_USER_PWD: ${PLAUSIBLE_ADMIN_PASSWORD:?error}
