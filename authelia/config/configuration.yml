@@ -47,6 +47,7 @@ access_control:
       policy: bypass
       resources:
         - "^/status([/?].*)?$"
+        - "^/assets([/?].*)?$"
 
     - domain: status.castelnuovo.dev
       policy: one_factor
