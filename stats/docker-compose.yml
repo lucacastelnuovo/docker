@@ -51,11 +51,11 @@ services:
       ADMIN_USER_EMAIL: luca@castelnuovo.dev
       ADMIN_USER_NAME: Luca Castelnuovo
       ADMIN_USER_PWD: ${PLAUSIBLE_ADMIN_PASSWORD:?error}
-      # MAILER_EMAIL: stats@mail.castelnuovo.dev
-      # SMTP_HOST_ADDR: mail.castelnuovo.dev
-      # SMTP_USER_NAME: castelnuovo/production
-      # SMTP_USER_PWD: ${PLAUSIBLE_MAIL_PASSWORD:?error}
-      # SMTP_HOST_SSL_ENABLED: true
+      MAILER_EMAIL: stats@mail.castelnuovo.dev
+      SMTP_HOST_ADDR: mail.castelnuovo.dev
+      SMTP_USER_NAME: castelnuovo/production
+      SMTP_USER_PWD: ${PLAUSIBLE_MAIL_PASSWORD:?error}
+      SMTP_HOST_SSL_ENABLED: true
     command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
     depends_on:
       - stats_db
