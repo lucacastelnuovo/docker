@@ -49,6 +49,7 @@ access_control:
         - "^/api([/?].*)?$"
         - "^/status([/?].*)?$"
         - "^/assets([/?].*)?$"
+        - "^/upload([/?].*)?$"
 
     - domain: status.castelnuovo.dev
       policy: one_factor
