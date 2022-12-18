@@ -4,14 +4,10 @@ services:
   mail:
     image: bytemark/smtp:latest
     restart: unless-stopped
-    networks:
-      - stats-network
 
   plausible_db:
     image: postgres:14-alpine
     restart: unless-stopped
-    networks:
-      - stats-network
     volumes:
       - ./data/stats_db:/var/lib/postgresql/data
     environment:
@@ -21,8 +17,6 @@ services:
   plausible_events_db:
     image: clickhouse/clickhouse-server:22.6-alpine
     restart: unless-stopped
-    networks:
-      - stats-network
     volumes:
       - ./data/stats_events:/var/lib/clickhouse
       - ./config/config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
@@ -35,7 +29,6 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - stats-network
       - hp1-network
     labels:
       traefik.enable: true
@@ -63,9 +56,6 @@ services:
       - mail
 
 networks:
-  stats-network:
-    driver: bridge
-    external: false
   hp1-network:
     driver: bridge
     external: true
