@@ -53,7 +53,7 @@ services:
       SMTP_USER_NAME: castelnuovo/production
       SMTP_USER_PWD: ${STATS_MAIL_PASSWORD:?error}
       SMTP_HOST_SSL_ENABLED: true
-    command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
+    command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
       - stats_db
       - stats_events
