@@ -66,34 +66,36 @@ docker compose up -d && cd ..
 cd portainer
 docker compose up -d && cd ..
 
-# Minio
-cd minio
-cp .env.example .env && nano .env
-docker compose up -d && cd ..
-# on mac execute: mc admin policy set s3 consoleAdmin user="uid=ltcastelnuovo,ou=people,dc=castelnuovo,dc=dev"
-
-# Teleport - TODO: all
+# Teleport
 cd teleport
-docker compose up -d && cd ..
-
-# Plausible - TODO: all
-# TODO: setup directory
-
-# Shlink
-cd shlink
-cp .env.example .env && nano .env
-docker compose up -d && cd ..
-
-# Invoices - TODO: all
-cd invoices
-cp .env.example .env && nano .env
 docker compose up -d && cd ..
 
 # Status
 cd status
 docker compose up -d && cd ..
 
-# Watchtower - TODO: restart & status check
+# Minio
+cd minio
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+# on mac execute: mc admin policy set s3 consoleAdmin user="uid=ltcastelnuovo,ou=people,dc=castelnuovo,dc=dev"
+
+# Shlink
+cd shlink
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# Plausible
+cd plausible
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# Invoices
+cd invoices
+cp .env.example .env && nano .env
+docker compose up -d && cd ..
+
+# Watchtower
 cd watchtower
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
