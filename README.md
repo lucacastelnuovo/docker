@@ -1,5 +1,26 @@
 # Docker.ltc files 🐋
 
+<!-- Teleport -->
+
+On postal:
+
+```bash
+nano /etc/teleport.yaml
+postal start
+
+# after it works
+service teleport restart
+```
+
+<!-- LDAP -->
+
+(&(objectclass=groupofnames)(member=%d))
+https://docs.oracle.com/cd/E26217_01/E26214/html/ldap-filters-attrs-users.html
+
+https://github.com/nitnelave/lldap/blob/main/example_configs/portainer.md
+
+Also setup in minio to only allow s3.castelnuovo.dev group members
+
 ### Server installation
 
 ```bash
@@ -25,12 +46,12 @@ cd mariadb
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
 
-# LLDAP - TODO: mail_password
+# LLDAP
 cd lldap
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
 
-# Authelia - TODO: mail_password
+# Authelia
 cd authelia
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
@@ -58,12 +79,12 @@ docker compose up -d && cd ..
 # Plausible - TODO: all
 # TODO: setup directory
 
-# Shlink - TODO: geolite_key
+# Shlink
 cd shlink
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
 
-# Invoices - TODO: mail_password
+# Invoices - TODO: all
 cd invoices
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
@@ -72,7 +93,7 @@ docker compose up -d && cd ..
 cd status
 docker compose up -d && cd ..
 
-# Watchtower - TODO: mail_password
+# Watchtower - TODO: restart & status check
 cd watchtower
 cp .env.example .env && nano .env
 docker compose up -d && cd ..

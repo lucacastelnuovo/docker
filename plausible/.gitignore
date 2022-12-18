@@ -2,5 +2,6 @@
 !.gitignore
 !docker-compose.yml
 !.env.example
-!clickhouse-config.xml
-!clickhouse-user.xml
+!config
+!config/config.xml
+!config/user.xml

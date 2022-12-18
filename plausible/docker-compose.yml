@@ -7,21 +7,29 @@ services:
     networks:
       - stats-network
 
-  stats_events:
-    image: yandex/clickhouse-server:21.3.2.5
+  plausible_db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - ./data/stats_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  plausible_events_db:
+    image: clickhouse/clickhouse-server:22.6-alpine
     restart: unless-stopped
     networks:
       - stats-network
     volumes:
-      - ./data:/var/lib/clickhouse
-      - ./clickhouse-config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
-      - ./clickhouse-user.xml:/etc/clickhouse-server/users.d/logging.xml:ro
+      - ./data/stats_events:/var/lib/clickhouse
+      - ./config/config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
+      - ./config/user.xml:/etc/clickhouse-server/users.d/logging.xml:ro
     ulimits:
       nofile:
         soft: 262144
         hard: 262144
 
-  stats:
+  plausible:
     image: plausible/analytics:latest
     container_name: stats
     restart: unless-stopped
@@ -35,20 +43,25 @@ services:
       traefik.http.routers.stats.entrypoints: https
       traefik.http.services.stats.loadbalancer.server.port: 8000
     environment:
-      BASE_URL: ${PLAUSIBLE_BASE_URL:?error}
-      SECRET_KEY_BASE: ${PLAUSIBLE_SECRET_KEY_BASE:?error}
-      DATABASE_URL: ${PLAUSIBLE_DATABASE_URL:?error}
-      CLICKHOUSE_DATABASE_URL: http://stats_events:8123/plausible_events_db
+      BASE_URL: https://stats.castelnuovo.dev
+      # DATABASE_URL: postgres://postgres:postgres@plausible_db/plausible_db
+      # CLICKHOUSE_DATABASE_URL: http://plausible_events_db:8123/plausible_events_db
+      SECRET_KEY_BASE: ${PLAUSIBLE_KEY:?error}
       DISABLE_AUTH: "true"
       DISABLE_REGISTRATION: "true"
       ADMIN_USER_EMAIL: luca@castelnuovo.dev
       ADMIN_USER_NAME: Luca Castelnuovo
-      ADMIN_USER_PWD: ${PLAUSIBLE_ADMIN_USER_PWD:?error}
-      MAILER_EMAIL: stats@mail.castelnuovo.dev
-      SMTP_HOST_ADDR: email.local.castelnuovo.xyz
-      SMTP_USER_NAME: castelnuovo/production
-      SMTP_USER_PWD: ${PLAUSIBLE_SMTP_USER_PWD:?error}
-    command: sh -c "/entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
+      ADMIN_USER_PWD: ${PLAUSIBLE_ADMIN_PASSWORD:?error}
+      # MAILER_EMAIL: stats@mail.castelnuovo.dev
+      # SMTP_HOST_ADDR: mail.castelnuovo.dev
+      # SMTP_USER_NAME: castelnuovo/production
+      # SMTP_USER_PWD: ${PLAUSIBLE_MAIL_PASSWORD:?error}
+      # SMTP_HOST_SSL_ENABLED: true
+    command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
+    depends_on:
+      - plausible_db
+      - plausible_events_db
+      - mail
 
 networks:
   stats-network:
