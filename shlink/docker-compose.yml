@@ -16,7 +16,6 @@ services:
     environment:
       DEFAULT_DOMAIN: castelnuovo.dev
       IS_HTTPS_ENABLED: true
-      GEOLITE_LICENSE_KEY: ${SHLINK_GEOLITE_LICENSE_KEY:?error}
       TIMEZONE: Europe/Amsterdam
       DB_DRIVER: mysql
       DB_HOST: mariadb
