@@ -17,45 +17,6 @@ access_control:
     - domain: teleport.castelnuovo.dev
       policy: bypass
 
-    # One-factor rules
-    ####################
-    # TODO: view route for viewing pdf in browser
-    # - domain: invoices.castelnuovo.dev
-    # policy: bypass
-    # resources:
-    # - "^/api/v1([/?].*)?$"
-    - domain: invoices.castelnuovo.dev
-      policy: one_factor
-      subject:
-        - group:invoices.castelnuovo.dev
-
-    - domain: stats.castelnuovo.dev
-      policy: bypass
-      resources:
-        - "^/api([/?].*)?$"
-        - "^/js([/?].*)?$"
-        - "^/css([/?].*)?$"
-        - "^/images([/?].*)?$"
-        - "^/share([/?].*)?$"
-
-    - domain: stats.castelnuovo.dev
-      policy: one_factor
-      subject:
-        - group:stats.castelnuovo.dev
-
-    - domain: status.castelnuovo.dev
-      policy: bypass
-      resources:
-        - "^/api([/?].*)?$"
-        - "^/status([/?].*)?$"
-        - "^/assets([/?].*)?$"
-        - "^/upload([/?].*)?$"
-
-    - domain: status.castelnuovo.dev
-      policy: one_factor
-      subject:
-        - group:status.castelnuovo.dev
-
     # Two-factor rules
     ####################
     - domain:
@@ -94,6 +55,43 @@ access_control:
       policy: two_factor
       subject:
         - group:postal.castelnuovo.dev
+
+    # TODO: view route for viewing pdf in browser
+    # - domain: invoice.castelnuovo.dev
+    # policy: bypass
+    # resources:
+    # - "^/api/v1([/?].*)?$"
+    - domain: invoice.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - group:invoice.castelnuovo.dev
+
+    - domain: stats.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/api([/?].*)?$"
+        - "^/js([/?].*)?$"
+        - "^/css([/?].*)?$"
+        - "^/images([/?].*)?$"
+        - "^/share([/?].*)?$"
+
+    - domain: stats.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - group:stats.castelnuovo.dev
+
+    - domain: status.castelnuovo.dev
+      policy: bypass
+      resources:
+        - "^/api([/?].*)?$"
+        - "^/status([/?].*)?$"
+        - "^/assets([/?].*)?$"
+        - "^/upload([/?].*)?$"
+
+    - domain: status.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - group:status.castelnuovo.dev
 
     - domain: traefik.castelnuovo.dev
       policy: two_factor
