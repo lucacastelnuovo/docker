@@ -70,6 +70,11 @@ access_control:
       subject:
         - group:ldap.castelnuovo.dev
 
+    - domain: nas.castelnuovo.dev
+      policy: two_factor
+      subject:
+        - group:nas.castelnuovo.dev
+
     - domain: portainer.castelnuovo.dev
       policy: bypass
       resources:
