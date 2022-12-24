@@ -24,6 +24,12 @@ http:
       rule: "Host(`postal.castelnuovo.dev`)"
       service: mail
 
+    invoice:
+      entryPoints:
+        - https
+      rule: "Host(`invoice.castelnuovo.dev`)"
+      service: invoice
+
   services:
     nas:
       loadBalancer:
@@ -44,6 +50,11 @@ http:
       loadBalancer:
         servers:
           - url: http://mail.vm.castelnuovo.dev
+
+    invoice:
+      loadBalancer:
+        servers:
+          - url: http://invoice.vm.castelnuovo.dev
 
   middlewares:
     auth:
