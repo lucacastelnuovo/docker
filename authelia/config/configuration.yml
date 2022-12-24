@@ -9,6 +9,9 @@ access_control:
     - domain: castelnuovo.dev
       policy: bypass
 
+    - domain: invoice.castelnuovo.dev
+      policy: bypass
+
     - domain:
         - s3.castelnuovo.dev
         - s3-console.castelnuovo.dev
@@ -55,16 +58,6 @@ access_control:
       policy: two_factor
       subject:
         - group:postal.castelnuovo.dev
-
-    # TODO: view route for viewing pdf in browser
-    # - domain: invoice.castelnuovo.dev
-    # policy: bypass
-    # resources:
-    # - "^/api/v1([/?].*)?$"
-    - domain: invoice.castelnuovo.dev
-      policy: two_factor
-      subject:
-        - group:invoice.castelnuovo.dev
 
     - domain: stats.castelnuovo.dev
       policy: bypass
