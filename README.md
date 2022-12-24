@@ -90,8 +90,8 @@ cd plausible
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
 
-# Invoices
-cd invoices
+# Invoice
+cd invoice
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
 

@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  invoices:
-    image: lucacastelnuovo/invoices:latest
-    container_name: invoices
+  invoice:
+    image: lucacastelnuovo/invoice:latest
+    container_name: invoice
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
@@ -11,28 +11,28 @@ services:
       - hp1-network
     labels:
       traefik.enable: true
-      traefik.http.routers.invoices.entrypoints: https
+      traefik.http.routers.invoice.entrypoints: https
     environment:
       APP_ENV: production
       APP_DEBUG: "false"
-      APP_URL: https://invoices.castelnuovo.dev
+      APP_URL: https://invoice.castelnuovo.dev
 
       DB_HOST: mariadb
       DB_PORT: 3306
-      DB_DATABASE: db_invoices
-      DB_USERNAME: user_invoices
-      DB_PASSWORD: ${INVOICES_DB_PASSWORD:?error}
+      DB_DATABASE: db_invoice
+      DB_USERNAME: user_invoice
+      DB_PASSWORD: ${INVOICE_DB_PASSWORD:?error}
 
       MAIL_HOST: mail.castelnuovo.dev
       MAIL_PORT: 25
       MAIL_USERNAME: castelnuovo/production
-      MAIL_PASSWORD: ${INVOICES_MAIL_PASSWORD:?error}
+      MAIL_PASSWORD: ${INVOICE_MAIL_PASSWORD:?error}
       MAIL_ENCRYPTION: tls
-      MAIL_FROM_ADDRESS: invoices@mail.castelnuovo.dev
+      MAIL_FROM_ADDRESS: invoice@mail.castelnuovo.dev
       MAIL_FROM_NAME: Castelnuovo Development
 
-      SANCTUM_STATEFUL_DOMAINS: invoices.castelnuovo.dev
-      SESSION_DOMAIN: invoices.castelnuovo.dev
+      SANCTUM_STATEFUL_DOMAINS: invoice.castelnuovo.dev
+      SESSION_DOMAIN: invoice.castelnuovo.dev
 
 networks:
   hp1-network:
