@@ -108,7 +108,7 @@ key_file = "/data/private_key"
 ## (example with "password"): LLDAP_SMTP_OPTIONS__PASSWORD
 #[smtp_options]
 ## Whether to enabled password reset via email, from LLDAP.
-enable_password_reset = false
+enable_password_reset = true
 ## The SMTP server.
 server = "mail.vm.castelnuovo.dev"
 ## The SMTP port.
