@@ -153,7 +153,7 @@ notifier:
   # filesystem:
   #   filename: /config/notification.txt
   smtp:
-    host: mail.castelnuovo.dev
+    host: mail.vm.castelnuovo.dev
     port: 25
     username: castelnuovo/production
     sender: "authelia@mail.castelnuovo.dev"
