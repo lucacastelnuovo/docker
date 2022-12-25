@@ -110,18 +110,18 @@ key_file = "/data/private_key"
 ## Whether to enabled password reset via email, from LLDAP.
 enable_password_reset = false
 ## The SMTP server.
-server = "mail.castelnuovo.dev"
+server = "mail.vm.castelnuovo.dev"
 ## The SMTP port.
 port = 25
 ## How the connection is encrypted, either "TLS" or "STARTTLS".
-smtp_encryption = "TLS"
+smtp_encryption = "STARTTLS"
 ## The SMTP user, usually your email address.
 user = "castelnuovo/production"
 ## The SMTP password.
 #password="password"
 ## The header field, optional: how the sender appears in the email. The first
 ## is a free-form name, followed by an email between <>.
-from = "ldap <ldap@email.castelnuovo.dev>"
+from = "ldap <ldap@mail.castelnuovo.dev>"
 ## Same for reply-to, optional.
 #reply_to="Do not reply <noreply@localhost>"
 
