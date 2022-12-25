@@ -94,6 +94,7 @@ docker compose up -d && cd ..
 cd invoice
 cp .env.example .env && nano .env
 docker compose up -d && cd ..
+# open https://invoice.castelnuovo.dev in Safari
 
 # Watchtower
 cd watchtower

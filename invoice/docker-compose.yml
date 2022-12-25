@@ -23,11 +23,11 @@ services:
       DB_USERNAME: user_invoice
       DB_PASSWORD: ${INVOICE_DB_PASSWORD:?error}
 
-      MAIL_HOST: mail.castelnuovo.dev
+      MAIL_HOST: mail.vm.castelnuovo.dev
       MAIL_PORT: 25
       MAIL_USERNAME: castelnuovo/production
       MAIL_PASSWORD: ${INVOICE_MAIL_PASSWORD:?error}
-      MAIL_ENCRYPTION: tls
+      MAIL_ENCRYPTION: starttls
       MAIL_FROM_ADDRESS: invoice@mail.castelnuovo.dev
       MAIL_FROM_NAME: Castelnuovo Development
 
