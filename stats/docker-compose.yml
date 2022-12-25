@@ -48,7 +48,7 @@ services:
       SECRET_KEY_BASE: ${STATS_KEY:?error}
       DISABLE_REGISTRATION: true
       MAILER_EMAIL: stats@mail.castelnuovo.dev
-      SMTP_HOST_ADDR: mail.castelnuovo.dev
+      SMTP_HOST_ADDR: mail.vm.castelnuovo.dev
       SMTP_USER_NAME: castelnuovo/production
       SMTP_USER_PWD: ${STATS_MAIL_PASSWORD:?error}
       SMTP_HOST_SSL_ENABLED: true
