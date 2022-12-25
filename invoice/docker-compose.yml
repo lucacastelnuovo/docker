@@ -12,6 +12,7 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.invoice.entrypoints: https
+      traefik.http.routers.invoice.middlewares: vpn@file
     environment:
       APP_ENV: production
       APP_DEBUG: "false"
