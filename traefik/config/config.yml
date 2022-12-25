@@ -21,7 +21,7 @@ http:
     mail:
       entryPoints:
         - https
-      rule: "Host(`postal.castelnuovo.dev`)"
+      rule: "Host(`mail.castelnuovo.dev`)"
       service: mail
 
     invoice:

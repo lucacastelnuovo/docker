@@ -49,15 +49,15 @@ access_control:
       subject:
         - group:portainer.castelnuovo.dev
 
-    - domain: postal.castelnuovo.dev
+    - domain: mail.castelnuovo.dev
       policy: bypass
       resources:
         - "^/api/v1([/?].*)?$"
 
-    - domain: postal.castelnuovo.dev
+    - domain: mail.castelnuovo.dev
       policy: two_factor
       subject:
-        - group:postal.castelnuovo.dev
+        - group:mail.castelnuovo.dev
 
     - domain: stats.castelnuovo.dev
       policy: bypass
