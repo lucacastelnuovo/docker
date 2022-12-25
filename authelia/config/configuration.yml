@@ -9,6 +9,9 @@ access_control:
     - domain: castelnuovo.dev
       policy: bypass
 
+    - domain: invoice.castelnuovo.dev
+      policy: bypass
+
     - domain:
         - s3.castelnuovo.dev
         - s3-console.castelnuovo.dev
@@ -25,11 +28,6 @@ access_control:
       policy: two_factor
       subject:
         - group:hp.castelnuovo.dev
-
-    - domain: invoice.castelnuovo.dev
-      policy: two_factor
-      subject:
-        - group:invoice.castelnuovo.dev
 
     - domain: ldap.castelnuovo.dev
       policy: two_factor
