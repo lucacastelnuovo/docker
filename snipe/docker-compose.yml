@@ -11,7 +11,7 @@ services:
       - hp1-network
     labels:
       traefik.enable: true
-      traefik.http.routers.invoice.entrypoints: https
+      traefik.http.routers.snipe.entrypoints: https
     volumes:
       - ./data:/config
     environment:
