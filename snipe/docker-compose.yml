@@ -33,7 +33,7 @@ services:
       MAIL_ENV_USERNAME: castelnuovo/production
       MAIL_ENV_PASSWORD: ${SNIPE_MAIL_PASSWORD:?error}
       MAIL_ENV_ENCRYPTION: tls
-      MAIL_ENV_FROM_ADDR: snip@mail.castelnuovo.dev
+      MAIL_ENV_FROM_ADDR: snipe@mail.castelnuovo.dev
       MAIL_ENV_FROM_NAME: Snipe
 
 networks:
