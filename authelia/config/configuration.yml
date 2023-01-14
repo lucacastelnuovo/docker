@@ -20,6 +20,9 @@ access_control:
     - domain: teleport.castelnuovo.dev
       policy: bypass
 
+    - domain: snipe.castelnuovo.dev
+      policy: bypass
+
     # Two-factor rules
     ####################
     - domain:
